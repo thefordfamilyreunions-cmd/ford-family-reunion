@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maude "Maudie" Ford — Family Line</title>
+<link rel="stylesheet" href="shared.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #3D5C35;
+    --sage-mid: #4E7A44;
+    --sage-light: #6B9E5C;
+    --gold: #C8973A;
+    --gold-light: #E8B85A;
+    --cream: #FAF7F0;
+    --warm-white: #FFFDF8;
+    --parchment: #F5EDD8;
+    --charcoal: #2A2A28;
+    --mid: #5A5A56;
+    --light-border: #E0D8C8;
+    --deep: #1C2E1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--sage);
+    padding: 72px 48px 88px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(200,151,58,0.15), transparent 70%);
+  }
+
+  .hero-inner { max-width: 760px; position: relative; }
+
+  .hero-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(250,247,240,0.5);
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: color 0.2s;
+  }
+
+  .hero-back:hover { color: var(--gold-light); }
+
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .hero-title em { color: var(--gold); font-style: italic; }
+
+  .hero-dates {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgba(250,247,240,0.5);
+    margin-bottom: 24px;
+  }
+
+  .hero-desc {
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(250,247,240,0.7);
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  /* BREADCRUMB PATH */
+  .lineage-path {
+    background: var(--parchment);
+    padding: 28px 48px;
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .lineage-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .lineage-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-right: 8px;
+  }
+
+  .lineage-item {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  .lineage-item.root { font-weight: 700; color: var(--sage); }
+  .lineage-item.highlight { color: var(--gold); font-weight: 700; }
+
+  .lineage-arrow {
+    color: var(--gold);
+    font-size: 14px;
+    opacity: 0.6;
+  }
+
+  /* GENERATION SECTIONS */
+  .gen-section {
+    padding: 64px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .gen-section + .gen-section {
+    padding-top: 0;
+  }
+
+  .gen-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .gen-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: rgba(61,92,53,0.1);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .gen-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .gen-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.1;
+  }
+
+  .gen-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--light-border), transparent);
+  }
+
+  /* PERSON CARD */
+  .person-card {
+    background: white;
+    border: 1px solid var(--light-border);
+    border-top: 3px solid var(--sage);
+    padding: 28px;
+    position: relative;
+  }
+
+  .person-card.gold-top { border-top-color: var(--gold); }
+  .person-card.highlight-card {
+    background: linear-gradient(135deg, rgba(61,92,53,0.04), rgba(200,151,58,0.04));
+    border-color: rgba(61,92,53,0.2);
+  }
+
+  .person-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    margin-bottom: 16px;
+  }
+
+  .person-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .person-dates {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .person-relation {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(61,92,53,0.6);
+    margin-bottom: 12px;
+  }
+
+  .person-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  /* CONNECTOR */
+  .connector {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+  }
+
+  .connector-line {
+    width: 2px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--sage), rgba(61,92,53,0.2));
+  }
+
+  .connector-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .connector-label-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--light-border);
+  }
+
+  .connector-label-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    white-space: nowrap;
+  }
+
+  /* COUPLE CARD */
+  .couple-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .couple-and {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1;
+  }
+
+  /* CHILDREN GRID */
+  .children-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .child-card {
+    background: white;
+    border: 1px solid var(--light-border);
+    padding: 20px;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .child-card:hover {
+    border-color: var(--sage);
+    transform: translateY(-2px);
+  }
+
+  .child-initial {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+    background: var(--sage);
+  }
+
+  .child-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 2px;
+  }
+
+  .child-dates {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .child-note {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .deceased-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(90,90,86,0.5);
+    background: var(--light-border);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  /* ROUSE FAMILY FULL TREE */
+  .rouse-section {
+    background: var(--deep);
+    padding: 72px 48px;
+  }
+
+  .rouse-inner { max-width: 1100px; margin: 0 auto; }
+
+  .rouse-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .rouse-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .rouse-title em { color: var(--gold); font-style: italic; }
+
+  .rouse-sub {
+    font-size: 16px;
+    color: rgba(250,247,240,0.5);
+    font-style: italic;
+  }
+
+  /* ROUSE CHILDREN */
+  .rouse-children {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  .rouse-child {
+    background: rgba(255,255,255,0.05);
+    padding: 28px 20px;
+    border-top: 2px solid transparent;
+    transition: background 0.2s;
+  }
+
+  .rouse-child:hover { background: rgba(255,255,255,0.08); }
+
+  .rouse-child.has-line { border-top-color: var(--gold); }
+  .rouse-child.deceased-line { border-top-color: rgba(255,255,255,0.2); }
+
+  .rouse-child-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .rouse-child-info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: rgba(250,247,240,0.4);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .rouse-child-kids {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .rouse-child-kids li {
+    font-size: 13px;
+    color: rgba(250,247,240,0.65);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .rouse-child-kids li::before {
+    content: '·';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .rouse-child-kids li.deceased {
+    color: rgba(250,247,240,0.35);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.2);
+  }
+
+  .rouse-child-kids li.deceased::before { opacity: 0.3; }
+
+  .rouse-deceased-note {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: rgba(250,247,240,0.25);
+    text-transform: uppercase;
+  }
+
+  /* SECOND ROW - more rouse children */
+  .rouse-children-row2 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+  }
+
+  /* LEGACY NOTE */
+  .legacy-note {
+    background: var(--gold);
+    padding: 40px 48px;
+    text-align: center;
+  }
+
+  .legacy-note-inner { max-width: 700px; margin: 0 auto; }
+
+  .legacy-note h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 12px;
+  }
+
+  .legacy-note p {
+    font-size: 16px;
+    color: rgba(28,46,26,0.75);
+    line-height: 1.7;
+  }
+
+  .legacy-note a {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 32px;
+    background: var(--deep);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .legacy-note a:hover { background: rgba(28,46,26,0.85); }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+  .reveal-d4 { transition-delay: 0.4s; }
+
+  @media (max-width: 900px) {
+    .children-grid { grid-template-columns: repeat(2, 1fr); }
+    .rouse-children { grid-template-columns: repeat(2, 1fr); }
+    .rouse-children-row2 { grid-template-columns: repeat(2, 1fr); }
+    .couple-row { grid-template-columns: 1fr; }
+    .couple-and { display: none; }
+    .gen-section { padding: 40px 24px; }
+    .rouse-section { padding: 48px 24px; }
+    .lineage-path { padding: 20px 24px; }
+    .hero { padding: 48px 24px 72px; }
+    .legacy-note { padding: 40px 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .children-grid { grid-template-columns: 1fr; }
+    .rouse-children { grid-template-columns: 1fr; }
+    .rouse-children-row2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <svg class="nav-brand-tree" viewBox="0 0 40 40" fill="none"><path d="M20 36 L20 22 M20 22 L12 14 M20 22 L28 14 M20 26 L10 18 M20 26 L30 18 M12 14 L8 8 M12 14 L16 8 M28 14 L24 8 M28 14 L32 8" stroke="#C8973A" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div><span class="nav-brand-text">Ford Family Reunion</span><span class="nav-brand-sub">Chicago 2027</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roots.html" class="active">Roots</a></li>
+    <li><a href="network.html">Network</a></li>
+    <li><a href="newsletter.html">Newsletter</a></li>
+    <li><a href="network.html" class="nav-cta">Join the Directory</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <a href="roots.html" class="hero-back">← Back to Roots</a>
+    <p class="hero-eyebrow">The Ford Family Line · Daughter of Hiram & Jemima</p>
+    <h1 class="hero-title">Maude <em>"Maudie"</em> Ford</h1>
+    <p class="hero-dates">April 23, 1885 — 1946</p>
+    <p class="hero-desc">Maude Ford married Timothy Tyler and her descendants form one of the most deeply rooted branches of the Ford family — a line that runs through the Tyler, Stewart, and Rouse families all the way to Chicago 2027.</p>
+  </div>
+</section>
+
+<!-- LINEAGE PATH -->
+<div class="lineage-path">
+  <div class="lineage-inner">
+    <span class="lineage-label">Lineage</span>
+    <span class="lineage-item root">Hiram & Jemima Ford</span>
+    <span class="lineage-arrow">→</span>
+    <span class="lineage-item highlight">Maude Ford</span>
+    <span class="lineage-arrow">→</span>
+    <span class="lineage-item">Timita Tyler</span>
+    <span class="lineage-arrow">→</span>
+    <span class="lineage-item">Marguerite Stewart</span>
+    <span class="lineage-arrow">→</span>
+    <span class="lineage-item">Lem & Marguerite Rouse</span>
+    <span class="lineage-arrow">→</span>
+    <span class="lineage-item" style="color: var(--sage); font-weight: 600;">Chicago 2027</span>
+  </div>
+</div>
+
+<!-- GEN 1: MAUDE & TIMOTHY -->
+<div class="gen-section reveal">
+  <div class="gen-header">
+    <div class="gen-number">1</div>
+    <div>
+      <span class="gen-label">Generation One</span>
+      <div class="gen-title">Maude Ford & Timothy Tyler</div>
+    </div>
+    <div class="gen-rule"></div>
+  </div>
+
+  <div class="couple-row">
+    <div class="person-card gold-top">
+      <div class="person-avatar" style="background: linear-gradient(135deg, #3D5C35, #1C2E1A);">MF</div>
+      <div class="person-name">Maude "Maudie" Ford</div>
+      <div class="person-dates">April 23, 1885 — 1946</div>
+      <div class="person-relation">Daughter of James Hiram Ford & Jemima Anderson</div>
+      <p class="person-desc">Born in Michigan. One of eight children of Hiram & Jemima Ford. Her marriage to Timothy Tyler continued the Ford legacy into Wisconsin and Indiana, connecting the Ford family to the Stewart and Rouse lines.</p>
+    </div>
+    <div class="couple-and">&</div>
+    <div class="person-card gold-top">
+      <div class="person-avatar" style="background: linear-gradient(135deg, #5C3D1E, #2C1A0E);">TT</div>
+      <div class="person-name">Timothy Tyler</div>
+      <div class="person-dates">1871 — 1920</div>
+      <div class="person-relation">Husband of Maude Ford</div>
+      <p class="person-desc">Born in Indiana in 1871. Timothy married Maude Ford and together they built a family that would carry the Ford name forward through their daughter Timita, born in Wisconsin in 1904.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTOR -->
+<div class="connector-label reveal">
+  <div class="connector-label-rule"></div>
+  <span class="connector-label-text">Their Children</span>
+  <div class="connector-label-rule"></div>
+</div>
+
+<!-- TIMITA & CHILDREN OF MAUDE -->
+<div class="gen-section reveal" style="padding-top: 32px;">
+  <div class="children-grid" style="grid-template-columns: repeat(4,1fr);">
+    <div class="child-card">
+      <div class="child-initial" style="background: var(--sage);">L</div>
+      <div class="child-name">Leona Tyler</div>
+      <div class="child-dates">1903 – 1919</div>
+      <p class="child-note">Eldest child of Maude & Timothy. Died young at age 16.</p>
+      <span class="deceased-badge">Deceased</span>
+    </div>
+    <div class="child-card">
+      <div class="child-initial" style="background: var(--sage);">W</div>
+      <div class="child-name">Willis Tyler</div>
+      <div class="child-dates">1909 – 1920</div>
+      <p class="child-note">Son of Maude & Timothy. Died young at age 11.</p>
+      <span class="deceased-badge">Deceased</span>
+    </div>
+    <div class="child-card">
+      <div class="child-initial" style="background: var(--sage);">R</div>
+      <div class="child-name">Robert Tyler</div>
+      <div class="child-dates">1910 –</div>
+      <p class="child-note">Son of Maude & Timothy Tyler.</p>
+    </div>
+    <div class="child-card" style="border-top-color: var(--gold); background: rgba(200,151,58,0.04);">
+      <div class="child-initial" style="background: var(--gold); color: #1C2E1A;">T</div>
+      <div class="child-name">Timita Tyler</div>
+      <div class="child-dates">1904 – ?  ·  Wisconsin</div>
+      <p class="child-note">Born in Wisconsin. Married Samuel Stewart. Mother of Marguerite Stewart — the link to the Rouse family.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTOR -->
+<div class="connector-label reveal">
+  <div class="connector-label-rule"></div>
+  <span class="connector-label-text">Timita Tyler marries Samuel Stewart</span>
+  <div class="connector-label-rule"></div>
+</div>
+
+<!-- GEN 2: TIMITA & SAMUEL -->
+<div class="gen-section reveal" style="padding-top: 32px;">
+  <div class="gen-header">
+    <div class="gen-number">2</div>
+    <div>
+      <span class="gen-label">Generation Two</span>
+      <div class="gen-title">Timita Tyler & Samuel Stewart</div>
+    </div>
+    <div class="gen-rule"></div>
+  </div>
+
+  <div class="couple-row">
+    <div class="person-card gold-top highlight-card">
+      <div class="person-avatar" style="background: linear-gradient(135deg, #C8973A, #8B6520);">TT</div>
+      <div class="person-name">Timita Tyler</div>
+      <div class="person-dates">1904 — ?  ·  Born Wisconsin</div>
+      <div class="person-relation">Daughter of Maude Ford & Timothy Tyler · Granddaughter of Hiram & Jemima Ford</div>
+      <p class="person-desc">Timita was born in Wisconsin in 1904 — the home state connection to Hiram & Jemima Ford's Midwestern roots. She married Samuel Stewart and settled in Indiana, where they raised their family including their daughter Marguerite.</p>
+    </div>
+    <div class="couple-and">&</div>
+    <div class="person-card gold-top">
+      <div class="person-avatar" style="background: linear-gradient(135deg, #1B4F72, #0D2C45);">SS</div>
+      <div class="person-name">Samuel Stewart</div>
+      <div class="person-dates">1897 — ?  ·  Born Virginia</div>
+      <div class="person-relation">Husband of Timita Tyler</div>
+      <p class="person-desc">Born in Virginia in 1897. Son of George D. Stewart and Alice (1868–). Samuel's father George later married Lucy Fanlkner of Radford, Virginia. Samuel and Timita built their life in Indiana — the home state of Timita's grandfather James Hiram Ford.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTOR -->
+<div class="connector-label reveal">
+  <div class="connector-label-rule"></div>
+  <span class="connector-label-text">Their Children</span>
+  <div class="connector-label-rule"></div>
+</div>
+
+<div class="gen-section reveal" style="padding-top: 32px;">
+  <div class="children-grid" style="grid-template-columns: repeat(3,1fr);">
+    <div class="child-card">
+      <div class="child-initial" style="background: var(--sage);">A</div>
+      <div class="child-name">Alice Stewart</div>
+      <div class="child-dates">1914 –</div>
+      <p class="child-note">Daughter of Timita & Samuel Stewart. Sister of Marguerite.</p>
+    </div>
+    <div class="child-card" style="border-top-color: var(--gold); background: rgba(200,151,58,0.04);">
+      <div class="child-initial" style="background: var(--gold); color: #1C2E1A;">M</div>
+      <div class="child-name">Marguerite Stewart</div>
+      <div class="child-dates">Oct 12, 1918 — 1967  ·  South Bend, IN</div>
+      <p class="child-note">Born in South Bend. Great-granddaughter of Hiram & Jemima Ford. Married Lemuel Hugh Rouse on August 31, 1934. The heart of the Rouse family story.</p>
+    </div>
+    <div class="child-card">
+      <div class="child-initial" style="background: var(--sage);">G</div>
+      <div class="child-name">George Frederick Stewart</div>
+      <div class="child-dates">–</div>
+      <p class="child-note">Son of Timita & Samuel Stewart. Brother of Marguerite. His daughter Karen Jean carries this line forward.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTOR -->
+<div class="connector-label reveal">
+  <div class="connector-label-rule"></div>
+  <span class="connector-label-text">Marguerite Stewart marries Lemuel Hugh Rouse · August 31, 1934</span>
+  <div class="connector-label-rule"></div>
+</div>
+
+<!-- ROUSE FAMILY SECTION -->
+<section class="rouse-section">
+  <div class="rouse-inner">
+    <div class="rouse-header reveal">
+      <span class="section-label" style="display:block; text-align:center;">Generation Three</span>
+      <h2 class="rouse-title">Lemuel & <em>Marguerite</em> Rouse</h2>
+      <p class="rouse-sub">1913–1975 & 1918–1967 · 1118 N. Burns Street, South Bend, Indiana</p>
+    </div>
+
+    <!-- LEM & MARGUERITE CARD -->
+    <div class="couple-row reveal" style="margin-bottom: 48px;">
+      <div class="person-card" style="background: rgba(255,255,255,0.06); border-color: rgba(200,151,58,0.3); border-top: 3px solid var(--gold);">
+        <div class="person-avatar" style="background: linear-gradient(135deg, #8B4513, #5C2E0A);">LR</div>
+        <div class="person-name" style="color: var(--cream);">Lemuel Hugh Rouse</div>
+        <div class="person-dates">Aug 17, 1913 — 1975</div>
+        <div class="person-relation" style="color: rgba(250,247,240,0.45);">Son of Earl Rouse & Catherine Maude Lucas · Kokomo, Indiana</div>
+        <p class="person-desc" style="color: rgba(250,247,240,0.65);">Lemuel was born August 17, 1913 in Kokomo, Indiana — a son of Earl Rouse and Catherine Maude Lucas. He married Marguerite Stewart on August 31, 1934 in St. Joseph County, Indiana. Together they raised their family at 1118 N. Burns Street, South Bend — a home full of Sunday dinners, cinnamon rolls, and memories that live on in this family.</p>
+      </div>
+      <div class="couple-and" style="color: var(--gold);">&</div>
+      <div class="person-card" style="background: rgba(255,255,255,0.06); border-color: rgba(200,151,58,0.3); border-top: 3px solid var(--gold);">
+        <div class="person-avatar" style="background: linear-gradient(135deg, #C8973A, #8B6520);">MR</div>
+        <div class="person-name" style="color: var(--cream);">Marguerite Stewart Rouse</div>
+        <div class="person-dates">Oct 12, 1918 — Jan 1967</div>
+        <div class="person-relation" style="color: rgba(250,247,240,0.45);">Great-granddaughter of James Hiram Ford & Jemima Anderson</div>
+        <p class="person-desc" style="color: rgba(250,247,240,0.65);">Born in South Bend, Indiana. Daughter of Timita Tyler & Samuel Stewart. Granddaughter of Maude Ford. Great-granddaughter of Hiram & Jemima Ford. Her funeral drew more people than the family had ever seen in one place — "the funeral of a rock star," as Kathy remembered it.</p>
+      </div>
+    </div>
+
+    <!-- ROUSE CHILDREN LABEL -->
+    <div style="text-align: center; margin-bottom: 32px;" class="reveal">
+      <span class="section-label" style="display:block; text-align:center; color: rgba(200,151,58,0.7);">Their Children — 9 who survived to adulthood</span>
+    </div>
+
+    <!-- ROW 1: 4 children -->
+    <div class="rouse-children reveal">
+      <div class="rouse-child has-line">
+        <div class="rouse-child-name">Timothy & Hazel</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite</div>
+        <ul class="rouse-child-kids">
+          <li>Karleen/Steve</li>
+          <li>Kelli/Cedric</li>
+          <li>Kim/Lamont</li>
+          <li>Torrence (aka Sean)</li>
+          <li>Lauren</li>
+          <li>Lindsey · Kaylan</li>
+          <li>Karin · Brittney</li>
+          <li>Kailah/Yul · Timothy</li>
+        </ul>
+      </div>
+      <div class="rouse-child deceased-line">
+        <div class="rouse-child-name">Brenda* / Jacob*</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite · Deceased</div>
+        <ul class="rouse-child-kids">
+          <li class="deceased">Brenda Long (1941–1976)</li>
+        </ul>
+      </div>
+      <div class="rouse-child has-line">
+        <div class="rouse-child-name">Michael / Alice</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite</div>
+        <ul class="rouse-child-kids">
+          <li>Pamela*</li>
+          <li>Natasha · Chris</li>
+          <li>Kathy/Rodney</li>
+          <li>Michelle/Mark*</li>
+          <li>Megan · Ryan</li>
+          <li>Mike/Cassandra</li>
+          <li>Michael · Alayna</li>
+          <li>Summer · Jared</li>
+          <li>Chris/Ericka · Leah</li>
+          <li>Rachel/Imara · Amaya</li>
+        </ul>
+      </div>
+      <div class="rouse-child deceased-line">
+        <div class="rouse-child-name">Kenneth*</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite · Deceased 2004</div>
+        <ul class="rouse-child-kids">
+          <li class="deceased">Kenneth Rouse (1945–2004)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ROW 2: 5 more children -->
+    <div class="rouse-children-row2 reveal reveal-d1" style="margin-top: 2px;">
+      <div class="rouse-child has-line">
+        <div class="rouse-child-name">Anthony</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite</div>
+        <ul class="rouse-child-kids">
+          <li>Jenny · Kurt</li>
+          <li>Danyel · Chris</li>
+          <li>Malik · Keirstin</li>
+          <li>Rhonda/Norman</li>
+          <li>Tiffany · Zarrian</li>
+          <li>Ciarra · Kiarra</li>
+          <li>Zayda · Craig'ry</li>
+          <li>Legend · Ta'kira</li>
+          <li>D'Ayres · Rai'ka</li>
+          <li>Araiya · Mark</li>
+          <li>Racina · Mark*</li>
+          <li>Karen/Rodney</li>
+          <li>Jordan · Jayden</li>
+        </ul>
+      </div>
+      <div class="rouse-child has-line">
+        <div class="rouse-child-name">Rosamond / James*</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite</div>
+        <ul class="rouse-child-kids">
+          <li>Anthony · Morgan · Mia</li>
+          <li>Brenda/Alvin</li>
+          <li>Marc · Sydney</li>
+          <li>Kenneth/Janean</li>
+          <li>Isaiah · Lauren</li>
+          <li>Beth · Dasan · Drake</li>
+        </ul>
+      </div>
+      <div class="rouse-child has-line">
+        <div class="rouse-child-name">Kathy</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite</div>
+        <ul class="rouse-child-kids">
+          <li>Beverly · Kathy · Mark</li>
+          <li>Jonathin · Jaynel</li>
+          <li>Trinitee · Maleah</li>
+          <li>Shawntelle</li>
+          <li>Shawnise · Kelu</li>
+          <li>Isaiah · KeShawn</li>
+        </ul>
+      </div>
+      <div class="rouse-child has-line">
+        <div class="rouse-child-name">Frederick</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite</div>
+        <ul class="rouse-child-kids">
+          <li>Patricia · Jamal</li>
+          <li>Jamarquis · Janiesha</li>
+          <li>Heaven · Marcus</li>
+        </ul>
+      </div>
+      <div class="rouse-child deceased-line">
+        <div class="rouse-child-name">Gregory*</div>
+        <div class="rouse-child-info">Child of Lem & Marguerite · Deceased 2003</div>
+        <ul class="rouse-child-kids">
+          <li>Kayleah</li>
+          <li>Daya · Chris</li>
+          <li>Annisha · Trevonte</li>
+          <li>Rakiya</li>
+          <li>Jaime · Glorianna</li>
+          <li>Robert · Jayon</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rouse-deceased-note reveal">* Deceased · ⭐ Grandkids · ❋ Great Grandkids · ⊙ Great Great Grandkids
+    </div>
+
+  </div>
+</section>
+
+<!-- LEGACY NOTE -->
+<div class="legacy-note">
+  <div class="legacy-note-inner reveal">
+    <h3>This line is coming to Chicago 2027.</h3>
+    <p>Every name on this page traces back to James Hiram Ford and Jemima Anderson. Many have never gathered together. The Ford Family Reunion is the first time the whole tree comes to the table.</p>
+    <a href="roots.html">← Back to All Ford Family Roots</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ford Family Reunion</div>
+      <p class="footer-brand-desc">Celebrating the descendants of James Hiram Ford & Jemima Anderson. Chicago, Illinois · July 2027.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">The Site</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roots.html">Our Roots</a></li>
+        <li><a href="network.html">Family Network</a></li>
+        <li><a href="newsletter.html">Ford Forward</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Family Lines</p>
+      <ul class="footer-links">
+        <li><a href="maude.html">Maude Ford Line</a></li>
+        <li><a href="#">Jasper Ford Line — Coming Soon</a></li>
+        <li><a href="#">William Jefferson Line — Coming Soon</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Get Involved</p>
+      <ul class="footer-links">
+        <li><a href="network.html">Join the Directory</a></li>
+        <li><a href="roots.html">Submit a Memory</a></li>
+        <li><a href="roots.html">Share a Recipe</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2027 Ford Family Reunion · thefordfamilyreunions-cmd.github.io/ford-family-reunion</span>
+    <span class="footer-copy">Descendants of James Hiram Ford & Jemima Anderson</span>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
