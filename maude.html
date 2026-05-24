@@ -398,7 +398,7 @@
     border-radius: 10px;
   }
 
-  /* ROUSE FAMILY FULL TREE */
+  /* ROUSE FAMILY FULL TREE — HIERARCHICAL */
   .rouse-section {
     background: var(--deep);
     padding: 72px 48px;
@@ -428,88 +428,224 @@
     font-style: italic;
   }
 
-  /* ROUSE CHILDREN */
-  .rouse-children {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    margin-bottom: 2px;
+  /* GEN LEGEND */
+  .gen-legend {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    padding: 16px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
   }
 
-  .rouse-child {
-    background: rgba(255,255,255,0.05);
-    padding: 28px 20px;
-    border-top: 2px solid transparent;
-    transition: background 0.2s;
-  }
-
-  .rouse-child:hover { background: rgba(255,255,255,0.08); }
-
-  .rouse-child.has-line { border-top-color: var(--gold); }
-  .rouse-child.deceased-line { border-top-color: rgba(255,255,255,0.2); }
-
-  .rouse-child-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--cream);
-    margin-bottom: 4px;
-    line-height: 1.2;
-  }
-
-  .rouse-child-info {
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    color: rgba(250,247,240,0.4);
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    font-size: 11px;
+    color: rgba(250,247,240,0.55);
+    letter-spacing: 0.5px;
   }
 
-  .rouse-child-kids {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .rouse-child-kids li {
-    font-size: 13px;
-    color: rgba(250,247,240,0.65);
-    line-height: 1.5;
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .rouse-child-kids li::before {
-    content: '·';
-    color: var(--gold);
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
     flex-shrink: 0;
   }
 
-  .rouse-child-kids li.deceased {
-    color: rgba(250,247,240,0.35);
-    text-decoration: line-through;
-    text-decoration-color: rgba(255,255,255,0.2);
+  /* CHILD OF LEM & MARGUERITE — top level accordion */
+  .lem-child-block {
+    margin-bottom: 3px;
   }
 
-  .rouse-child-kids li.deceased::before { opacity: 0.3; }
+  .lem-child-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .lem-child-tab {
+    background: rgba(200,151,58,0.15);
+    border-left: 4px solid var(--gold);
+    padding: 18px 24px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s;
+  }
+
+  .lem-child-tab:hover { background: rgba(200,151,58,0.22); }
+
+  .lem-child-tab.deceased-tab {
+    background: rgba(255,255,255,0.04);
+    border-left-color: rgba(255,255,255,0.2);
+  }
+
+  .lem-child-tab.deceased-tab:hover { background: rgba(255,255,255,0.07); }
+
+  .lem-child-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+
+  .lem-child-name.deceased-name { color: rgba(250,247,240,0.5); }
+
+  .lem-child-meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: rgba(250,247,240,0.35);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .lem-child-toggle {
+    font-size: 18px;
+    color: var(--gold);
+    transition: transform 0.3s;
+    margin-left: 16px;
+  }
+
+  .lem-child-block.open .lem-child-toggle { transform: rotate(180deg); }
+
+  /* GRANDCHILDREN PANEL */
+  .grandchildren-panel {
+    display: none;
+    background: rgba(255,255,255,0.02);
+    border-left: 4px solid rgba(200,151,58,0.3);
+    padding: 20px 0 4px 0;
+  }
+
+  .lem-child-block.open .grandchildren-panel { display: block; }
+
+  /* GRANDCHILD ROW */
+  .grandchild-row {
+    margin: 0 0 3px 0;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 48px;
+    align-items: stretch;
+  }
+
+  .grandchild-name-cell {
+    background: rgba(255,255,255,0.05);
+    padding: 14px 16px 14px 24px;
+    border-left: 3px solid var(--sage-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .grandchild-name-cell.deceased-gc {
+    border-left-color: rgba(255,255,255,0.15);
+    opacity: 0.6;
+  }
+
+  .grandchild-name {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+
+  .grandchild-name.deceased-name {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.3);
+    color: rgba(250,247,240,0.45);
+  }
+
+  .grandchild-gen-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  /* GREAT GRANDCHILDREN */
+  .ggc-cell {
+    background: rgba(255,255,255,0.03);
+    padding: 12px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ggc-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    font-size: 12px;
+    color: rgba(250,247,240,0.7);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.3;
+  }
+
+  .ggc-tag.deceased-tag {
+    background: rgba(255,255,255,0.02);
+    color: rgba(250,247,240,0.3);
+    text-decoration: line-through;
+  }
+
+  .ggc-tag.gggc {
+    background: rgba(200,151,58,0.08);
+    border: 1px solid rgba(200,151,58,0.2);
+    color: rgba(232,184,90,0.8);
+    font-size: 11px;
+  }
+
+  .ggc-tag.gggc::before {
+    content: '↳';
+    font-size: 10px;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .ggc-empty {
+    font-size: 12px;
+    color: rgba(250,247,240,0.2);
+    font-style: italic;
+    font-family: 'Lora', serif;
+  }
+
+  /* GEN LABEL DIVIDER inside panel */
+  .gc-section-label {
+    padding: 8px 24px 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(250,247,240,0.2);
+  }
 
   .rouse-deceased-note {
     text-align: center;
-    padding: 20px;
+    padding: 28px 20px 8px;
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     letter-spacing: 1.5px;
-    color: rgba(250,247,240,0.25);
+    color: rgba(250,247,240,0.2);
     text-transform: uppercase;
-  }
-
-  /* SECOND ROW - more rouse children */
-  .rouse-children-row2 {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2px;
+    line-height: 2;
   }
 
   /* LEGACY NOTE */
@@ -801,128 +937,267 @@
       </div>
     </div>
 
-    <!-- ROUSE CHILDREN LABEL -->
-    <div style="text-align: center; margin-bottom: 32px;" class="reveal">
-      <span class="section-label" style="display:block; text-align:center; color: rgba(200,151,58,0.7);">Their Children — 9 who survived to adulthood</span>
+    <!-- LEGEND -->
+    <div class="gen-legend reveal">
+      <div class="legend-item"><div class="legend-dot" style="background: rgba(200,151,58,0.4);"></div>Children of Lem &amp; Marguerite</div>
+      <div class="legend-item"><div class="legend-dot" style="background: var(--sage-light); opacity:0.7;"></div>Grandchildren</div>
+      <div class="legend-item"><div class="legend-dot" style="background: rgba(255,255,255,0.3);"></div>Great Grandchildren</div>
+      <div class="legend-item"><div class="legend-dot" style="background: rgba(200,151,58,0.3); border: 1px solid rgba(200,151,58,0.4);"></div>Great Great Grandchildren</div>
+      <div class="legend-item"><div class="legend-dot" style="background: rgba(255,255,255,0.1); opacity:0.4;"></div>* Deceased</div>
     </div>
 
-    <!-- ROW 1: 4 children -->
-    <div class="rouse-children reveal">
-      <div class="rouse-child has-line">
-        <div class="rouse-child-name">Timothy & Hazel</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite</div>
-        <ul class="rouse-child-kids">
-          <li>Karleen/Steve</li>
-          <li>Kelli/Cedric</li>
-          <li>Kim/Lamont</li>
-          <li>Torrence (aka Sean)</li>
-          <li>Lauren</li>
-          <li>Lindsey · Kaylan</li>
-          <li>Karin · Brittney</li>
-          <li>Kailah/Yul · Timothy</li>
-        </ul>
+    <!-- CHILD 1: TIMOTHY -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab">
+          <div><div class="lem-child-name">Timothy &amp; Hazel</div><div class="lem-child-meta">Child of Lem &amp; Marguerite</div></div>
+          <span class="lem-child-toggle">&#9662;</span>
+        </div>
       </div>
-      <div class="rouse-child deceased-line">
-        <div class="rouse-child-name">Brenda* / Jacob*</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite · Deceased</div>
-        <ul class="rouse-child-kids">
-          <li class="deceased">Brenda Long (1941–1976)</li>
-        </ul>
-      </div>
-      <div class="rouse-child has-line">
-        <div class="rouse-child-name">Michael / Alice</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite</div>
-        <ul class="rouse-child-kids">
-          <li>Pamela*</li>
-          <li>Natasha · Chris</li>
-          <li>Kathy/Rodney</li>
-          <li>Michelle/Mark*</li>
-          <li>Megan · Ryan</li>
-          <li>Mike/Cassandra</li>
-          <li>Michael · Alayna</li>
-          <li>Summer · Jared</li>
-          <li>Chris/Ericka · Leah</li>
-          <li>Rachel/Imara · Amaya</li>
-        </ul>
-      </div>
-      <div class="rouse-child deceased-line">
-        <div class="rouse-child-name">Kenneth*</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite · Deceased 2004</div>
-        <ul class="rouse-child-kids">
-          <li class="deceased">Kenneth Rouse (1945–2004)</li>
-        </ul>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Karleen / Steve</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell">
+            <span class="ggc-tag">Steve</span>
+            <span class="ggc-tag">(&#8853;Elijah)</span><span class="ggc-tag">(&#8853;Trinity)</span><span class="ggc-tag">(&#8853;Kasen)</span><span class="ggc-tag">Brandon</span><span class="ggc-tag">Lauren (&#8853;Tylah)</span><span class="ggc-tag">Lindsey</span><span class="ggc-tag">Kaylan</span>
+          </div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Kelli / Cedric</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-empty">To be added</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Kim / Lamont</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Torrence (aka Sean)</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Karin</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell">
+            <span class="ggc-tag">Brittney</span><span class="ggc-tag">(&#8853;Brooklynn)</span><span class="ggc-tag">Tyler</span><span class="ggc-tag">Chelsea</span><span class="ggc-tag">Sarah</span><span class="ggc-tag">Kailah / Yul</span><span class="ggc-tag">Yul Jr</span><span class="ggc-tag">Kiya</span><span class="ggc-tag">Timothy</span><span class="ggc-tag">Taylor</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ROW 2: 5 more children -->
-    <div class="rouse-children-row2 reveal reveal-d1" style="margin-top: 2px;">
-      <div class="rouse-child has-line">
-        <div class="rouse-child-name">Anthony</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite</div>
-        <ul class="rouse-child-kids">
-          <li>Jenny · Kurt</li>
-          <li>Danyel · Chris</li>
-          <li>Malik · Keirstin</li>
-          <li>Rhonda/Norman</li>
-          <li>Tiffany · Zarrian</li>
-          <li>Ciarra · Kiarra</li>
-          <li>Zayda · Craig'ry</li>
-          <li>Legend · Ta'kira</li>
-          <li>D'Ayres · Rai'ka</li>
-          <li>Araiya · Mark</li>
-          <li>Racina · Mark*</li>
-          <li>Karen/Rodney</li>
-          <li>Jordan · Jayden</li>
-        </ul>
+    <!-- CHILD 2: BRENDA -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab deceased-tab">
+          <div><div class="lem-child-name deceased-name">Brenda* / Jacob* <span style="font-size:13px; font-weight:400; font-style:italic; opacity:0.6;">(1941&#8211;1976)</span></div><div class="lem-child-meta">Child of Lem &amp; Marguerite &middot; Deceased</div></div>
+          <span class="lem-child-toggle" style="color: rgba(250,247,240,0.3);">&#9662;</span>
+        </div>
       </div>
-      <div class="rouse-child has-line">
-        <div class="rouse-child-name">Rosamond / James*</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite</div>
-        <ul class="rouse-child-kids">
-          <li>Anthony · Morgan · Mia</li>
-          <li>Brenda/Alvin</li>
-          <li>Marc · Sydney</li>
-          <li>Kenneth/Janean</li>
-          <li>Isaiah · Lauren</li>
-          <li>Beth · Dasan · Drake</li>
-        </ul>
-      </div>
-      <div class="rouse-child has-line">
-        <div class="rouse-child-name">Kathy</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite</div>
-        <ul class="rouse-child-kids">
-          <li>Beverly · Kathy · Mark</li>
-          <li>Jonathin · Jaynel</li>
-          <li>Trinitee · Maleah</li>
-          <li>Shawntelle</li>
-          <li>Shawnise · Kelu</li>
-          <li>Isaiah · KeShawn</li>
-        </ul>
-      </div>
-      <div class="rouse-child has-line">
-        <div class="rouse-child-name">Frederick</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite</div>
-        <ul class="rouse-child-kids">
-          <li>Patricia · Jamal</li>
-          <li>Jamarquis · Janiesha</li>
-          <li>Heaven · Marcus</li>
-        </ul>
-      </div>
-      <div class="rouse-child deceased-line">
-        <div class="rouse-child-name">Gregory*</div>
-        <div class="rouse-child-info">Child of Lem & Marguerite · Deceased 2003</div>
-        <ul class="rouse-child-kids">
-          <li>Kayleah</li>
-          <li>Daya · Chris</li>
-          <li>Annisha · Trevonte</li>
-          <li>Rakiya</li>
-          <li>Jaime · Glorianna</li>
-          <li>Robert · Jayon</li>
-        </ul>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Marguerite / Lightfoot</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-empty">No children</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell deceased-gc"><div class="grandchild-name deceased-name">Stephen*</div><div class="grandchild-gen-label">Grandchild &middot; Deceased</div></div>
+          <div class="ggc-cell">
+            <span class="ggc-tag">Steve
+              <span class="ggc-tag gggc">/ Marisol</span>
+            </span>
+          </div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Rhonda</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell">
+            <span class="ggc-tag">Olivia <span class="ggc-tag gggc">Camden</span></span>
+          </div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Nichole</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-empty">To be added</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="rouse-deceased-note reveal">* Deceased · ⭐ Grandkids · ❋ Great Grandkids · ⊙ Great Great Grandkids
+    <!-- CHILD 3: MICHAEL -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab">
+          <div><div class="lem-child-name">Michael / Alice</div><div class="lem-child-meta">Child of Lem &amp; Marguerite</div></div>
+          <span class="lem-child-toggle">&#9662;</span>
+        </div>
+      </div>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell deceased-gc"><div class="grandchild-name deceased-name">Pamela*</div><div class="grandchild-gen-label">Grandchild &middot; Deceased</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Rondell</span><span class="ggc-tag">(&#8853;Pamela)</span><span class="ggc-tag">Chris / Jonathan</span><span class="ggc-tag">Amber</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Natasha</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">(&#8853;Aiden)</span><span class="ggc-tag">Amber</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Kathy / Rodney</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">James</span><span class="ggc-tag">Kelley</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Michelle / Mark*</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Megan</span><span class="ggc-tag">Ryan</span><span class="ggc-tag">Mikaela</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Mike / Cassandra</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Michael</span><span class="ggc-tag">Alayna</span><span class="ggc-tag">Jared</span><span class="ggc-tag">Summer</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Chris / Ericka</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Leah</span><span class="ggc-tag">Brook</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Rachel / Imara</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Chris</span><span class="ggc-tag">Amaya</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHILD 4: KENNETH -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab deceased-tab">
+          <div><div class="lem-child-name deceased-name">Kenneth* <span style="font-size:13px; font-weight:400; font-style:italic; opacity:0.6;">(1945&#8211;2004)</span></div><div class="lem-child-meta">Child of Lem &amp; Marguerite &middot; Deceased</div></div>
+          <span class="lem-child-toggle" style="color: rgba(250,247,240,0.3);">&#9662;</span>
+        </div>
+      </div>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell" style="border-left-color: rgba(255,255,255,0.1);">
+            <div class="grandchild-name" style="opacity:0.4; font-style:italic;">No children recorded</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHILD 5: ANTHONY (LEM'S SON) -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab">
+          <div><div class="lem-child-name">Anthony</div><div class="lem-child-meta">Child of Lem &amp; Marguerite</div></div>
+          <span class="lem-child-toggle">&#9662;</span>
+        </div>
+      </div>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Jenny / Kurt</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">(&#8853;Danyel)</span><span class="ggc-tag">Chris</span><span class="ggc-tag">Malik</span><span class="ggc-tag">Keirstin</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Rhonda / Norman</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell">
+            <span class="ggc-tag">Tiffany</span><span class="ggc-tag">Zarrian</span><span class="ggc-tag">(&#8853;Ciarra)</span><span class="ggc-tag">Kiarra</span><span class="ggc-tag">(&#8853;Zayda)</span><span class="ggc-tag">Craig'ry</span><span class="ggc-tag">(&#8853;Legend)</span><span class="ggc-tag">Ta'kira</span><span class="ggc-tag">(&#8853;D'Ayres)</span><span class="ggc-tag">Rai'ka</span><span class="ggc-tag">(&#8853;Araiya)</span><span class="ggc-tag">Mark</span><span class="ggc-tag">Racina</span>
+          </div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Karen / Rodney</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Jordan</span><span class="ggc-tag">Jayden</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell deceased-gc"><div class="grandchild-name deceased-name">Mark*</div><div class="grandchild-gen-label">Grandchild &middot; Deceased</div></div>
+          <div class="ggc-cell"><span class="ggc-empty">&mdash;</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHILD 6: ROSAMOND -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab">
+          <div><div class="lem-child-name">Rosamond / James*</div><div class="lem-child-meta">Child of Lem &amp; Marguerite</div></div>
+          <span class="lem-child-toggle">&#9662;</span>
+        </div>
+      </div>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Anthony</div><div class="grandchild-gen-label">Grandchild &middot; Rosamond's son</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Kristen</span><span class="ggc-tag">Morgan</span><span class="ggc-tag">Mia</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Brenda / Alvin</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Marc</span><span class="ggc-tag">Sydney</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Kenneth</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Isaiah</span><span class="ggc-tag">Kamryn</span><span class="ggc-tag">Lauren</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Beth</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Dasan</span><span class="ggc-tag">Drake</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHILD 7: KATHY -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab">
+          <div><div class="lem-child-name">Kathy</div><div class="lem-child-meta">Child of Lem &amp; Marguerite</div></div>
+          <span class="lem-child-toggle">&#9662;</span>
+        </div>
+      </div>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Beverly</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Kathy</span><span class="ggc-tag">Mark</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Mark</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Jonathin</span><span class="ggc-tag">Jaynel</span><span class="ggc-tag">Trinitee</span><span class="ggc-tag">Maleah</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Shawntelle</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Shawnise</span><span class="ggc-tag">Kelu</span><span class="ggc-tag">KeShawn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHILD 8: FREDERICK -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab">
+          <div><div class="lem-child-name">Frederick</div><div class="lem-child-meta">Child of Lem &amp; Marguerite</div></div>
+          <span class="lem-child-toggle">&#9662;</span>
+        </div>
+      </div>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Patricia</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Jamal</span><span class="ggc-tag">Jamarquis</span><span class="ggc-tag">Janiesha</span><span class="ggc-tag">Heaven</span><span class="ggc-tag">Marcus</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHILD 9: GREGORY -->
+    <div class="lem-child-block reveal" onclick="toggleChild(this)">
+      <div class="lem-child-header">
+        <div class="lem-child-tab deceased-tab">
+          <div><div class="lem-child-name deceased-name">Gregory* <span style="font-size:13px; font-weight:400; font-style:italic; opacity:0.6;">(1956&#8211;2003)</span></div><div class="lem-child-meta">Child of Lem &amp; Marguerite &middot; Deceased</div></div>
+          <span class="lem-child-toggle" style="color: rgba(250,247,240,0.3);">&#9662;</span>
+        </div>
+      </div>
+      <div class="grandchildren-panel">
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Kayleah</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-empty">&mdash;</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Daya / Chris</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">(&#8853;Annisha)</span><span class="ggc-tag">Trevonte</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Rakiya</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-empty">&mdash;</span></div>
+        </div>
+        <div class="grandchild-row">
+          <div class="grandchild-name-cell"><div class="grandchild-name">Jaime</div><div class="grandchild-gen-label">Grandchild</div></div>
+          <div class="ggc-cell"><span class="ggc-tag">Glorianna</span><span class="ggc-tag">Robert</span><span class="ggc-tag">Jayon</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rouse-deceased-note reveal">
+      * Deceased &nbsp;&middot;&nbsp; Grandchildren = direct children of Lem &amp; Marguerite's kids &nbsp;&middot;&nbsp; Great Grandchildren = their children &nbsp;&middot;&nbsp; &#8853; = Great Great Grandchild
     </div>
 
   </div>
@@ -982,6 +1257,15 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
   reveals.forEach(el => obs.observe(el));
+
+  function toggleChild(block) {
+    block.classList.toggle('open');
+  }
+
+  // Open all by default on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.lem-child-block').forEach(b => b.classList.add('open'));
+  });
 </script>
 </body>
 </html>
