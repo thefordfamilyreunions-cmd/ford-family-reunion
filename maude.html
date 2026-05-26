@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maude "Maudie" Ford — Ford Family Legacy</title>
+<link rel="stylesheet" href="shared.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#1C2E1A;--gold:#C8973A;--gold-light:#E8B85A;
+    --cream:#FAF7F0;--parchment:#F5EDD8;--charcoal:#2A2A28;
+    --mid:#5A5A56;--light-border:#E0D8C8;--sage:#3D5C35;--sage-light:#6B9E5C;--deep:#1C2E1A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--charcoal);font-family:'Lora',serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+  .hero{background:var(--sage);padding:72px 48px 88px;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:56px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(200,151,58,0.15),transparent 70%);}
+  .hero-inner{max-width:760px;position:relative;}
+  .hero-back{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,0.5);text-decoration:none;margin-bottom:32px;transition:color 0.2s;}
+  .hero-back:hover{color:var(--gold-light);}
+  .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,72px);font-weight:900;color:#FAF7F0;line-height:1.05;margin-bottom:20px;}
+  .hero-title em{color:var(--gold);font-style:italic;}
+  .hero-dates{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;color:rgba(250,247,240,0.5);margin-bottom:24px;}
+  .hero-desc{font-size:18px;font-style:italic;color:rgba(250,247,240,0.7);line-height:1.75;max-width:600px;}
+
+  .lineage-path{background:var(--parchment);padding:24px 48px;border-bottom:1px solid var(--light-border);}
+  .lineage-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .lin-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-right:8px;}
+  .lin{font-family:'Lora',serif;font-size:15px;color:var(--charcoal);font-weight:500;}
+  .lin.root{font-weight:700;color:var(--sage);}
+  .lin.hi{color:var(--gold);font-weight:700;}
+  .arr{color:var(--gold);font-size:14px;opacity:0.6;}
+
+  .tree-content{max-width:1000px;margin:0 auto;padding:60px 48px 100px;}
+
+  /* PORTRAIT */
+  .portrait{width:80px;height:80px;border-radius:4px;overflow:hidden;flex-shrink:0;margin-bottom:14px;}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+  .pp{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;font-style:italic;color:white;}
+
+  /* COUPLE ROW */
+  .couple-row{display:grid;grid-template-columns:1fr 48px 1fr;gap:0;align-items:start;margin-bottom:8px;}
+  .cand{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;color:var(--gold);text-align:center;padding-top:28px;}
+
+  /* PERSON CARD */
+  .pcard{background:white;border:1px solid var(--light-border);border-top:3px solid var(--sage);padding:24px;}
+  .pcard.gt{border-top-color:var(--gold);}
+  .pcard.dk{background:rgba(28,46,26,0.9);border-color:rgba(200,151,58,0.4);border-top:3px solid var(--gold);}
+  .pn{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--deep);margin-bottom:4px;line-height:1.2;}
+  .pcard.dk .pn{color:#FAF7F0;}
+  .pd{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .pr{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(61,92,53,0.6);margin-bottom:10px;}
+  .pcard.dk .pr{color:rgba(250,247,240,0.6);}
+  .ptxt{font-size:14px;line-height:1.75;color:var(--mid);}
+  .pcard.dk .ptxt{color:rgba(250,247,240,0.85);}
+
+  /* CONNECTOR */
+  .conn{display:flex;align-items:center;gap:16px;padding:4px 0;margin:8px 0;}
+  .conn-rule{flex:1;height:1px;background:var(--light-border);}
+  .conn-txt{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage-light);white-space:nowrap;}
+  .conn-line{width:2px;height:40px;margin:0 auto;background:linear-gradient(to bottom,var(--sage),rgba(61,92,53,0.15));}
+
+  /* SECTION HEADER */
+  .sec-hdr{margin:48px 0 28px;}
+  .sec-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--deep);line-height:1.15;}
+  .sec-title em{color:var(--gold);font-style:italic;}
+
+  /* DRILL-DOWN GRID — links to child pages */
+  .child-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+
+  .child-link{
+    display:block;text-decoration:none;color:inherit;
+    background:white;border:1px solid var(--light-border);border-top:3px solid var(--sage);
+    position:relative;overflow:hidden;
+    transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;
+  }
+  .child-link:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.09);}
+  .child-link.gold-top{border-top-color:var(--gold);}
+  .child-link.deceased{opacity:0.65;border-top-color:rgba(90,90,86,0.3);}
+  .child-link.deceased:hover{transform:none;box-shadow:none;border-color:var(--light-border);}
+  .child-link.coming{border-style:dashed;border-top-style:solid;cursor:default;}
+  .child-link.coming:hover{transform:none;box-shadow:none;border-color:var(--light-border);}
+
+  .child-photo{width:100%;aspect-ratio:3/2;max-height:110px;overflow:hidden;background:var(--forest);}
+  .child-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .child-ph{width:100%;height:100%;min-height:90px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:30px;font-weight:900;font-style:italic;color:rgba(200,151,58,0.6);}
+
+  .child-info{padding:16px 18px 18px;}
+  .child-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--deep);margin-bottom:3px;line-height:1.2;}
+  .child-dates{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .child-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:10px;}
+  .child-cta{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);display:flex;align-items:center;gap:4px;}
+  .child-link:hover .child-cta{color:var(--gold);}
+  .child-link.coming .child-cta{color:rgba(90,90,86,0.35);}
+
+  .dec-badge{position:absolute;top:8px;right:8px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;color:rgba(90,90,86,0.6);background:var(--light-border);padding:2px 7px;border-radius:10px;}
+  .live-badge{position:absolute;top:8px;right:8px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;color:white;background:var(--sage);padding:2px 7px;border-radius:10px;}
+
+  /* TIMITA/SAMUEL SECTION */
+  .gen-section{margin:48px 0;}
+
+  /* LEGACY NOTE */
+  .legacy-note{background:var(--gold);padding:40px 48px;text-align:center;}
+  .legacy-note h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--deep);margin-bottom:12px;}
+  .legacy-note p{font-size:16px;color:rgba(28,46,26,0.75);line-height:1.7;}
+  .legacy-note a{display:inline-block;margin-top:24px;padding:12px 32px;background:var(--deep);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+
+  @media(max-width:800px){
+    .couple-row{grid-template-columns:1fr;}.cand{display:none;}
+    .child-grid{grid-template-columns:repeat(2,1fr);}
+    .tree-content{padding:40px 20px 80px;}
+    .hero{padding:48px 24px 72px;}
+    .lineage-path{padding:16px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <svg class="nav-brand-tree" viewBox="0 0 40 40" fill="none"><path d="M20 36 L20 22 M20 22 L12 14 M20 22 L28 14 M20 26 L10 18 M20 26 L30 18 M12 14 L8 8 M12 14 L16 8 M28 14 L24 8 M28 14 L32 8" stroke="#C8973A" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div><span class="nav-brand-text">Ford Family Legacy</span><span class="nav-brand-sub">Descendants of Hiram &amp; Jemima Ford</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roots.html" class="active">Roots</a></li>
+    <li><a href="network.html">Network</a></li>
+    <li><a href="newsletter.html">Legacy</a></li>
+    <li><a href="faces.html">Faces</a></li>
+    <li><a href="network.html" class="nav-cta">Join the Directory</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <a href="faces.html" class="hero-back">← Back to Faces</a>
+    <p class="hero-eyebrow">Daughter of Hiram &amp; Jemima Ford · 5th of 8 Siblings</p>
+    <h1 class="hero-title">Maude <em>"Maudie"</em> Ford</h1>
+    <p class="hero-dates">April 23, 1885 — 1946</p>
+    <p class="hero-desc">Maude Ford married Timothy Tyler and her descendants form one of the most deeply rooted branches of the Ford family — running through the Tyler, Stewart, and Rouse families all the way to Chicago 2027.</p>
+  </div>
+</section>
+
+<!-- LINEAGE -->
+<div class="lineage-path">
+  <div class="lineage-inner">
+    <span class="lin-label">Lineage</span>
+    <span class="lin root">Hiram &amp; Jemima Ford</span><span class="arr">→</span>
+    <span class="lin hi">Maude Ford</span><span class="arr">→</span>
+    <span class="lin">Timita Tyler</span><span class="arr">→</span>
+    <span class="lin">Marguerite Stewart</span><span class="arr">→</span>
+    <span class="lin">Lem &amp; Marguerite Rouse</span><span class="arr">→</span>
+    <span class="lin" style="color:var(--sage);font-weight:600;">Chicago 2027</span>
+  </div>
+</div>
+
+<div class="tree-content">
+
+  <!-- GEN 1: MAUDE & TIMOTHY -->
+  <div class="sec-hdr reveal">
+    <span class="sec-label">Generation One</span>
+    <h2 class="sec-title">Maude Ford &amp; <em>Timothy Tyler</em></h2>
+  </div>
+
+  <div class="couple-row reveal">
+    <div class="pcard gt">
+      <div class="portrait">
+        <img src="maude-ford.jpg" alt="Maude Ford" onerror="this.outerHTML='<div class=\'pp\' style=\'background:linear-gradient(135deg,#3D5C35,#1C2E1A);width:80px;height:80px;border-radius:4px;\'>MF</div>'">
+      </div>
+      <div class="pn">Maude "Maudie" Ford</div>
+      <div class="pd">April 23, 1885 — 1946</div>
+      <div class="pr">Daughter of James Hiram Ford &amp; Jemima Anderson</div>
+      <p class="ptxt">Born in Michigan. One of eight children of Hiram &amp; Jemima Ford. Her marriage to Timothy Tyler continued the Ford legacy into Wisconsin and Indiana, connecting the Ford family to the Stewart and Rouse lines.</p>
+    </div>
+    <div class="cand">&amp;</div>
+    <div class="pcard gt">
+      <div class="portrait"><div class="pp" style="background:linear-gradient(135deg,#5C3D1E,#2C1A0E);">TT</div></div>
+      <div class="pn">Timothy Tyler</div>
+      <div class="pd">1871 — 1920</div>
+      <div class="pr">Husband of Maude Ford</div>
+      <p class="ptxt">Born in Indiana in 1871. Timothy married Maude Ford and together they built a family that would carry the Ford name forward through their daughter Timita, born in Wisconsin in 1904.</p>
+    </div>
+  </div>
+
+  <!-- MAUDE'S CHILDREN -->
+  <div class="conn-line reveal"></div>
+  <div class="conn reveal"><div class="conn-rule"></div><span class="conn-txt">Their Children</span><div class="conn-rule"></div></div>
+
+  <div class="child-grid reveal">
+    <div class="child-link deceased">
+      <div class="child-photo"><div class="child-ph">L</div></div>
+      <span class="dec-badge">Deceased</span>
+      <div class="child-info">
+        <div class="child-name">Leona Tyler</div>
+        <div class="child-dates">1903 — 1919</div>
+        <p class="child-desc">Eldest child of Maude &amp; Timothy. Died young at age 16.</p>
+      </div>
+    </div>
+    <div class="child-link deceased">
+      <div class="child-photo"><div class="child-ph">W</div></div>
+      <span class="dec-badge">Deceased</span>
+      <div class="child-info">
+        <div class="child-name">Willis Tyler</div>
+        <div class="child-dates">1909 — 1920</div>
+        <p class="child-desc">Son of Maude &amp; Timothy. Died young at age 11.</p>
+      </div>
+    </div>
+    <div class="child-link coming">
+      <div class="child-photo"><div class="child-ph">R</div></div>
+      <div class="child-info">
+        <div class="child-name">Robert Tyler</div>
+        <div class="child-dates">1910 —</div>
+        <p class="child-desc">Son of Maude &amp; Timothy. Has children and grandchildren.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+    <div class="child-link gold-top" href="timita.html" onclick="window.location='timita.html'">
+      <div class="child-photo"><div class="child-ph" style="color:rgba(200,151,58,0.8);">T</div></div>
+      <span class="live-badge">Live ✓</span>
+      <div class="child-info">
+        <div class="child-name">Timita Tyler</div>
+        <div class="child-dates">1904 — ? · Wisconsin</div>
+        <p class="child-desc">Born in Wisconsin. Married Samuel Stewart. Mother of Marguerite — the link to the Rouse family.</p>
+        <span class="child-cta">Explore Timita's line →</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="legacy-note">
+  <div class="reveal" style="max-width:700px;margin:0 auto;">
+    <h3>This line is coming to Chicago 2027.</h3>
+    <p>Every name on this page traces back to James Hiram Ford and Jemima Anderson — 7 generations deep. Many have never gathered together. The Ford Family Legacy is the first time the whole tree comes to the table.</p>
+    <a href="faces.html">← Back to All Ford Family Faces</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ford Family Legacy</div>
+      <p class="footer-brand-desc">Celebrating the descendants of James Hiram Ford &amp; Jemima Anderson.</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,247,240,0.3);margin-top:8px;">fordlegacy.com</p>
+    </div>
+    <div>
+      <p class="footer-col-title">The Site</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li><li><a href="roots.html">Our Roots</a></li>
+        <li><a href="faces.html">Faces</a></li><li><a href="network.html">Network</a></li>
+        <li><a href="newsletter.html">Legacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Family Lines</p>
+      <ul class="footer-links">
+        <li><a href="maude.html">Maude Ford</a></li>
+        <li><a href="rosamond.html">Rosamond's Line ✓</a></li>
+        <li><a href="#">More coming soon</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Get Involved</p>
+      <ul class="footer-links">
+        <li><a href="network.html">Join the Directory</a></li>
+        <li><a href="roots.html">Submit a Memory</a></li>
+        <li><a href="roots.html">Submit a Photo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2027 Ford Family Legacy · fordlegacy.com</span>
+    <span class="footer-copy">Descendants of James Hiram Ford &amp; Jemima Anderson</span>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
