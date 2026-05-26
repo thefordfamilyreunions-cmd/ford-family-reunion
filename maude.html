@@ -271,6 +271,96 @@
     color: var(--mid);
   }
 
+
+  /* PORTRAIT SQUARE on person cards */
+  .person-portrait {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .person-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .person-portrait-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    color: white;
+    position: relative;
+  }
+
+  .person-portrait-placeholder .upload-hint {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .person-card:hover .person-portrait-placeholder .upload-hint,
+  .person-portrait-placeholder:hover .upload-hint {
+    opacity: 1;
+  }
+
+  .upload-hint svg {
+    width: 20px;
+    height: 20px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  /* CHILD portrait square */
+  .child-portrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .child-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+  }
+
+  .child-portrait-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: white;
+  }
+
   /* CONNECTOR */
   .connector {
     display: flex;
@@ -728,15 +818,14 @@
     <svg class="nav-brand-tree" viewBox="0 0 40 40" fill="none"><path d="M20 36 L20 22 M20 22 L12 14 M20 22 L28 14 M20 26 L10 18 M20 26 L30 18 M12 14 L8 8 M12 14 L16 8 M28 14 L24 8 M28 14 L32 8" stroke="#C8973A" stroke-width="2.5" stroke-linecap="round"/></svg>
     <div><span class="nav-brand-text">Ford Family Legacy</span><span class="nav-brand-sub">Descendants of Hiram &amp; Jemima Ford</span></div>
   </a>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="roots.html" class="active">Roots</a></li>
-    <li><a href="faces.html">Faces</a></li>
     <li><a href="network.html">Network</a></li>
-    <li><a href="newsletter.html">Newsletter</a></li>
+    <li><a href="newsletter.html">Legacy</a></li>
+    <li><a href="faces.html">Faces</a></li>
     <li><a href="network.html" class="nav-cta">Join the Directory</a></li>
-  </ul>
-</nav>
+  </ul></nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -767,47 +856,6 @@
   </div>
 </div>
 
-<!-- PHOTO GALLERY -->
-<section style="padding: 64px 48px 0; max-width: 1100px; margin: 0 auto;">
-  <div class="reveal" style="text-align: center; margin-bottom: 40px;">
-    <span class="section-label" style="display:block; text-align:center;">Photo Gallery</span>
-    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px, 3vw, 38px); font-weight: 700; color: var(--deep); margin-bottom: 12px;">Faces of <em style="color: var(--gold); font-style: italic;">Maude's Line</em></h2>
-    <p style="font-size: 16px; color: var(--mid); max-width: 540px; margin: 0 auto;">Photos of family members from this line. Have a photo to add? Submit it below and we'll add it to the wall.</p>
-  </div>
-
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;" class="reveal">
-
-    <!-- Maude placeholder -->
-    <div style="background: linear-gradient(160deg, #2D5028, #1C3A1A); aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border: 1px solid rgba(200,151,58,0.2);">
-      <span style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; font-style: italic; color: var(--gold); opacity: 0.7;">MMF</span>
-      <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: rgba(250,247,240,0.4); text-transform: uppercase; margin-top: 10px; text-align: center; padding: 0 12px;">Maude "Maudie" Ford<br>1885–1946</span>
-      <div style="position: absolute; top: 8px; left: 8px; background: var(--gold); color: var(--deep); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; text-transform: uppercase;">This Line</div>
-    </div>
-
-    <!-- Lem placeholder -->
-    <div style="background: linear-gradient(160deg, #3A2010, #1A0E06); aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border: 1px solid rgba(200,151,58,0.15);">
-      <span style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; font-style: italic; color: var(--gold); opacity: 0.7;">LR</span>
-      <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: rgba(250,247,240,0.4); text-transform: uppercase; margin-top: 10px; text-align: center; padding: 0 12px;">Lemuel Hugh Rouse<br>1913–1975</span>
-    </div>
-
-    <!-- Marguerite placeholder -->
-    <div style="background: linear-gradient(160deg, #2D4A2A, #1C3018); aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border: 1px solid rgba(200,151,58,0.25);">
-      <span style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; font-style: italic; color: var(--gold); opacity: 0.7;">MR</span>
-      <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: rgba(250,247,240,0.4); text-transform: uppercase; margin-top: 10px; text-align: center; padding: 0 12px;">Marguerite Stewart Rouse<br>1918–1967</span>
-      <div style="position: absolute; top: 8px; left: 8px; background: rgba(200,151,58,0.2); border: 1px solid rgba(200,151,58,0.4); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; text-transform: uppercase;">The Heart</div>
-    </div>
-
-    <!-- Submit photo card -->
-    <div style="background: transparent; border: 2px dashed rgba(200,151,58,0.25); aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,151,58,0.6)'" onmouseout="this.style.borderColor='rgba(200,151,58,0.25)'" onclick="window.location='roots.html'">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:0.35; margin-bottom: 12px;"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#C8973A" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#C8973A" stroke-width="1.5"/><path d="M21 15l-5-5L5 21" stroke="#C8973A" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <p style="font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: rgba(200,151,58,0.5); text-align: center; padding: 0 16px;">Add a Photo</p>
-      <p style="font-family: 'Lora', serif; font-size: 11px; color: rgba(90,90,86,0.45); text-align: center; padding: 0 16px; margin-top: 8px; line-height: 1.5;">Have a photo of this family? Click to submit.</p>
-    </div>
-
-  </div>
-  <hr style="border: none; border-top: 1px solid rgba(200,151,58,0.2); margin-bottom: 64px;">
-</section>
-
 <!-- GEN 1: MAUDE & TIMOTHY -->
 <div class="gen-section reveal">
   <div class="gen-header">
@@ -821,7 +869,9 @@
 
   <div class="couple-row">
     <div class="person-card gold-top">
-      <div class="person-avatar" style="background: linear-gradient(135deg, #3D5C35, #1C2E1A);">MF</div>
+      <div class="person-portrait">
+        <img src="maude-sample.png" alt="Maude Ford — Sample Photo">
+      </div>
       <div class="person-name">Maude "Maudie" Ford</div>
       <div class="person-dates">April 23, 1885 — 1946</div>
       <div class="person-relation">Daughter of James Hiram Ford & Jemima Anderson</div>
@@ -829,7 +879,12 @@
     </div>
     <div class="couple-and">&</div>
     <div class="person-card gold-top">
-      <div class="person-avatar" style="background: linear-gradient(135deg, #5C3D1E, #2C1A0E);">TT</div>
+      <div class="person-portrait">
+        <div class="person-portrait-placeholder" style="background: linear-gradient(135deg, #5C3D1E, #2C1A0E);">
+          TT
+          <div class="upload-hint" title="Add photo"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
+        </div>
+      </div>
       <div class="person-name">Timothy Tyler</div>
       <div class="person-dates">1871 — 1920</div>
       <div class="person-relation">Husband of Maude Ford</div>
@@ -849,27 +904,27 @@
 <div class="gen-section reveal" style="padding-top: 32px;">
   <div class="children-grid" style="grid-template-columns: repeat(4,1fr);">
     <div class="child-card">
-      <div class="child-initial" style="background: var(--sage);">L</div>
+      <div class="child-portrait"><div class="child-portrait-placeholder" style="background: var(--sage);">L</div></div>
       <div class="child-name">Leona Tyler</div>
       <div class="child-dates">1903 – 1919</div>
       <p class="child-note">Eldest child of Maude & Timothy. Died young at age 16.</p>
       <span class="deceased-badge">Deceased</span>
     </div>
     <div class="child-card">
-      <div class="child-initial" style="background: var(--sage);">W</div>
+      <div class="child-portrait"><div class="child-portrait-placeholder" style="background: var(--sage);">W</div></div>
       <div class="child-name">Willis Tyler</div>
       <div class="child-dates">1909 – 1920</div>
       <p class="child-note">Son of Maude & Timothy. Died young at age 11.</p>
       <span class="deceased-badge">Deceased</span>
     </div>
     <div class="child-card">
-      <div class="child-initial" style="background: var(--sage);">R</div>
+      <div class="child-portrait"><div class="child-portrait-placeholder" style="background: var(--sage);">R</div></div>
       <div class="child-name">Robert Tyler</div>
       <div class="child-dates">1910 –</div>
       <p class="child-note">Son of Maude & Timothy Tyler.</p>
     </div>
     <div class="child-card" style="border-top-color: var(--gold); background: rgba(200,151,58,0.04);">
-      <div class="child-initial" style="background: var(--gold); color: #1C2E1A;">T</div>
+      <div class="child-portrait"><div class="child-portrait-placeholder" style="background: var(--gold); color: #1C2E1A;">T</div></div>
       <div class="child-name">Timita Tyler</div>
       <div class="child-dates">1904 – ?  ·  Wisconsin</div>
       <p class="child-note">Born in Wisconsin. Married Samuel Stewart. Mother of Marguerite Stewart — the link to the Rouse family.</p>
@@ -897,7 +952,12 @@
 
   <div class="couple-row">
     <div class="person-card gold-top highlight-card">
-      <div class="person-avatar" style="background: linear-gradient(135deg, #C8973A, #8B6520);">TT</div>
+      <div class="person-portrait">
+        <div class="person-portrait-placeholder" style="background: linear-gradient(135deg, #C8973A, #8B6520);">
+          TT
+          <div class="upload-hint" title="Add photo"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
+        </div>
+      </div>
       <div class="person-name">Timita Tyler</div>
       <div class="person-dates">1904 — ?  ·  Born Wisconsin</div>
       <div class="person-relation">Daughter of Maude Ford & Timothy Tyler · Granddaughter of Hiram & Jemima Ford</div>
@@ -905,7 +965,12 @@
     </div>
     <div class="couple-and">&</div>
     <div class="person-card gold-top">
-      <div class="person-avatar" style="background: linear-gradient(135deg, #1B4F72, #0D2C45);">SS</div>
+      <div class="person-portrait">
+        <div class="person-portrait-placeholder" style="background: linear-gradient(135deg, #1B4F72, #0D2C45);">
+          SS
+          <div class="upload-hint" title="Add photo"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
+        </div>
+      </div>
       <div class="person-name">Samuel Stewart</div>
       <div class="person-dates">1897 — ?  ·  Born Virginia</div>
       <div class="person-relation">Husband of Timita Tyler</div>
@@ -924,19 +989,19 @@
 <div class="gen-section reveal" style="padding-top: 32px;">
   <div class="children-grid" style="grid-template-columns: repeat(3,1fr);">
     <div class="child-card">
-      <div class="child-initial" style="background: var(--sage);">A</div>
+      <div class="child-portrait"><div class="child-portrait-placeholder" style="background: var(--sage);">A</div></div>
       <div class="child-name">Alice Stewart</div>
       <div class="child-dates">1914 –</div>
       <p class="child-note">Daughter of Timita & Samuel Stewart. Sister of Marguerite.</p>
     </div>
     <div class="child-card" style="border-top-color: var(--gold); background: rgba(200,151,58,0.04);">
-      <div class="child-initial" style="background: var(--gold); color: #1C2E1A;">M</div>
+      <div class="child-portrait"><div class="child-portrait-placeholder" style="background: var(--gold); color: #1C2E1A;">M</div></div>
       <div class="child-name">Marguerite Stewart</div>
       <div class="child-dates">Oct 12, 1918 — 1967  ·  South Bend, IN</div>
       <p class="child-note">Born in South Bend. Great-granddaughter of Hiram & Jemima Ford. Married Lemuel Hugh Rouse on August 31, 1934. The heart of the Rouse family story.</p>
     </div>
     <div class="child-card">
-      <div class="child-initial" style="background: var(--sage);">G</div>
+      <div class="child-portrait"><div class="child-portrait-placeholder" style="background: var(--sage);">G</div></div>
       <div class="child-name">George Frederick Stewart</div>
       <div class="child-dates">–</div>
       <p class="child-note">Son of Timita & Samuel Stewart. Brother of Marguerite. His daughter Karen Jean carries this line forward.</p>
@@ -963,7 +1028,12 @@
     <!-- LEM & MARGUERITE CARD -->
     <div class="couple-row reveal" style="margin-bottom: 48px;">
       <div class="person-card" style="background: rgba(255,255,255,0.06); border-color: rgba(200,151,58,0.3); border-top: 3px solid var(--gold);">
-        <div class="person-avatar" style="background: linear-gradient(135deg, #8B4513, #5C2E0A);">LR</div>
+        <div class="person-portrait">
+        <div class="person-portrait-placeholder" style="background: linear-gradient(135deg, #8B4513, #5C2E0A);">
+          LR
+          <div class="upload-hint" title="Add photo"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
+        </div>
+      </div>
         <div class="person-name" style="color: var(--cream);">Lemuel Hugh Rouse</div>
         <div class="person-dates">Aug 17, 1913 — 1975</div>
         <div class="person-relation" style="color: rgba(250,247,240,0.45);">Son of Earl Rouse & Catherine Maude Lucas · Kokomo, Indiana</div>
@@ -971,7 +1041,12 @@
       </div>
       <div class="couple-and" style="color: var(--gold);">&</div>
       <div class="person-card" style="background: rgba(255,255,255,0.06); border-color: rgba(200,151,58,0.3); border-top: 3px solid var(--gold);">
-        <div class="person-avatar" style="background: linear-gradient(135deg, #C8973A, #8B6520);">MR</div>
+        <div class="person-portrait">
+        <div class="person-portrait-placeholder" style="background: linear-gradient(135deg, #C8973A, #8B6520);">
+          MR
+          <div class="upload-hint" title="Add photo"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
+        </div>
+      </div>
         <div class="person-name" style="color: var(--cream);">Marguerite Stewart Rouse</div>
         <div class="person-dates">Oct 12, 1918 — Jan 1967</div>
         <div class="person-relation" style="color: rgba(250,247,240,0.45);">Great-granddaughter of James Hiram Ford & Jemima Anderson</div>
