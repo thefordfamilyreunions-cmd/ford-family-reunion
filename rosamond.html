@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosamond Rouse — Ford Family Legacy</title>
+<link rel="stylesheet" href="shared.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#1C2E1A;--gold:#C8973A;--gold-light:#E8B85A;
+    --cream:#FAF7F0;--parchment:#F5EDD8;--charcoal:#2A2A28;
+    --mid:#5A5A56;--light-border:#E0D8C8;--sage:#3D5C35;--sage-light:#6B9E5C;--deep:#1C2E1A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--charcoal);font-family:'Lora',serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+  /* HERO */
+  .hero{background:var(--forest);padding:72px 48px 88px;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:56px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(200,151,58,0.15),transparent 70%);}
+  .hero-inner{max-width:760px;position:relative;}
+  .hero-back{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,0.45);text-decoration:none;margin-bottom:32px;transition:color 0.2s;}
+  .hero-back:hover{color:var(--gold-light);}
+  .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,72px);font-weight:900;color:#FAF7F0;line-height:1.05;margin-bottom:20px;}
+  .hero-title em{color:var(--gold);font-style:italic;}
+  .hero-desc{font-size:18px;font-style:italic;color:rgba(250,247,240,0.65);line-height:1.75;max-width:600px;}
+
+  /* LINEAGE */
+  .lineage-path{background:var(--parchment);padding:24px 48px;border-bottom:1px solid var(--light-border);}
+  .lineage-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .lin-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-right:8px;}
+  .lin{font-family:'Lora',serif;font-size:15px;color:var(--charcoal);font-weight:500;}
+  .lin.root{font-weight:700;color:var(--sage);}
+  .lin.hi{color:var(--gold);font-weight:700;}
+  .arr{color:var(--gold);font-size:14px;opacity:0.6;}
+
+  /* MAIN */
+  .tree-content{max-width:1000px;margin:0 auto;padding:60px 48px 100px;}
+
+  /* PORTRAIT */
+  .portrait{width:80px;height:80px;border-radius:4px;overflow:hidden;flex-shrink:0;margin-bottom:14px;}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+  .pp{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;font-style:italic;color:white;}
+
+  /* COUPLE ROW */
+  .couple-row{display:grid;grid-template-columns:1fr 48px 1fr;gap:0;align-items:start;margin-bottom:8px;}
+  .cand{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;color:var(--gold);text-align:center;padding-top:28px;}
+
+  /* PERSON CARD */
+  .pcard{background:white;border:1px solid var(--light-border);border-top:3px solid var(--gold);padding:24px;}
+  .pn{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--deep);margin-bottom:4px;line-height:1.2;}
+  .pd{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .pr{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(61,92,53,0.6);margin-bottom:10px;}
+  .ptxt{font-size:14px;line-height:1.75;color:var(--mid);}
+
+  /* CONNECTOR */
+  .conn{display:flex;align-items:center;gap:16px;padding:4px 0;margin:8px 0;}
+  .conn-rule{flex:1;height:1px;background:var(--light-border);}
+  .conn-txt{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage-light);white-space:nowrap;}
+  .conn-line{width:2px;height:40px;margin:0 auto;background:linear-gradient(to bottom,var(--gold),rgba(200,151,58,0.1));}
+
+  /* SECTION HEADER */
+  .sec-hdr{margin:52px 0 24px;}
+  .sec-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--deep);line-height:1.15;}
+  .sec-title em{color:var(--gold);font-style:italic;}
+
+  /* ══ LEVEL 1 — ROSAMOND'S CHILDREN ══ */
+  .l1-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px;}
+
+  .l1-card{
+    background:white;border:1px solid var(--light-border);border-top:3px solid var(--sage);
+    position:relative;cursor:pointer;
+    transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;overflow:hidden;
+  }
+  .l1-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.09);}
+  .l1-card.open{border-color:var(--sage);border-top:3px solid var(--sage);}
+
+  .l1-photo{width:100%;aspect-ratio:3/2;max-height:120px;overflow:hidden;background:var(--forest);}
+  .l1-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .l1-ph{width:100%;height:100%;min-height:100px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:32px;font-weight:900;font-style:italic;color:rgba(200,151,58,0.6);}
+
+  .l1-info{padding:16px 18px 18px;}
+  .l1-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--deep);margin-bottom:3px;line-height:1.2;}
+  .l1-rel{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(61,92,53,0.5);margin-bottom:8px;}
+  .l1-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:10px;}
+  .l1-hint{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(61,92,53,0.4);}
+  .l1-card:hover .l1-hint,.l1-card.open .l1-hint{color:var(--gold);}
+
+  /* L1 EXPANDED PANEL */
+  .l1-panel{display:none;background:var(--parchment);border:1px solid var(--light-border);border-top:none;border-left:3px solid var(--sage);padding:24px;}
+  .l1-panel.open{display:block;}
+  .panel-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:16px;}
+
+  /* ══ LEVEL 2 — GRANDCHILDREN ══ */
+  .l2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+
+  .l2-card{
+    background:white;border:1px solid var(--light-border);border-top:2px solid var(--sage-light);
+    position:relative;cursor:pointer;
+    transition:border-color 0.2s,transform 0.15s,box-shadow 0.15s;overflow:hidden;
+  }
+  .l2-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.07);}
+  .l2-card.no-expand{cursor:default;}
+  .l2-card.no-expand:hover{transform:none;box-shadow:none;border-color:var(--light-border);}
+  .l2-card.open{border-color:var(--sage);border-top:2px solid var(--sage);}
+
+  .l2-photo{width:100%;aspect-ratio:1/1;max-height:90px;overflow:hidden;background:var(--forest);}
+  .l2-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .l2-ph{width:100%;height:100%;min-height:80px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:24px;font-weight:900;font-style:italic;color:rgba(200,151,58,0.55);}
+
+  .l2-info{padding:12px 14px 14px;}
+  .l2-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--deep);margin-bottom:2px;line-height:1.2;}
+  .l2-rel{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(61,92,53,0.4);margin-bottom:6px;}
+  .l2-hint{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(61,92,53,0.3);margin-top:6px;}
+  .l2-card:hover .l2-hint,.l2-card.open .l2-hint{color:var(--gold);}
+
+  /* L2 PANEL */
+  .l2-panel{display:none;background:white;border:1px solid var(--light-border);border-top:none;border-left:3px solid var(--sage-light);padding:16px;}
+  .l2-panel.open{display:block;}
+  .l2-panel-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sage-light);display:block;margin-bottom:10px;}
+
+  /* ══ LEVEL 3 — GREAT GRANDCHILDREN TAGS ══ */
+  .ggc-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+  .ggc-tag{display:inline-block;padding:5px 12px;background:rgba(61,92,53,0.06);border:1px solid rgba(61,92,53,0.12);border-radius:3px;font-size:13px;color:var(--charcoal);font-family:'DM Sans',sans-serif;}
+  .empty-note{font-size:13px;color:rgba(90,90,86,0.45);font-style:italic;}
+
+  /* BACK NAV STRIP */
+  .back-strip{background:var(--forest);padding:16px 48px;display:flex;align-items:center;gap:24px;}
+  .back-strip a{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,0.5);text-decoration:none;transition:color 0.2s;}
+  .back-strip a:hover{color:var(--gold);}
+  .back-strip .sep{color:rgba(250,247,240,0.2);}
+
+  /* LEGACY NOTE */
+  .legacy-note{background:var(--gold);padding:40px 48px;text-align:center;}
+  .legacy-note h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--deep);margin-bottom:12px;}
+  .legacy-note p{font-size:16px;color:rgba(28,46,26,0.75);line-height:1.7;}
+  .legacy-note a{display:inline-block;margin-top:24px;padding:12px 32px;background:var(--deep);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  .rd1{transition-delay:0.05s;}.rd2{transition-delay:0.1s;}.rd3{transition-delay:0.15s;}.rd4{transition-delay:0.2s;}
+
+  @media(max-width:800px){
+    .couple-row{grid-template-columns:1fr;}.cand{display:none;}
+    .l1-grid{grid-template-columns:1fr;}
+    .l2-grid{grid-template-columns:repeat(2,1fr);}
+    .tree-content{padding:40px 20px 80px;}
+    .hero{padding:48px 24px 72px;}
+    .lineage-path{padding:16px 20px;}
+    .back-strip{padding:16px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <svg class="nav-brand-tree" viewBox="0 0 40 40" fill="none"><path d="M20 36 L20 22 M20 22 L12 14 M20 22 L28 14 M20 26 L10 18 M20 26 L30 18 M12 14 L8 8 M12 14 L16 8 M28 14 L24 8 M28 14 L32 8" stroke="#C8973A" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div><span class="nav-brand-text">Ford Family Legacy</span><span class="nav-brand-sub">Descendants of Hiram &amp; Jemima Ford</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roots.html">Roots</a></li>
+    <li><a href="network.html">Network</a></li>
+    <li><a href="newsletter.html">Legacy</a></li>
+    <li><a href="faces.html">Faces</a></li>
+    <li><a href="network.html" class="nav-cta">Join the Directory</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <a href="maude.html" class="hero-back">← Back to Maude's Line</a>
+    <p class="hero-eyebrow">Daughter of Lem &amp; Marguerite Rouse · Child of the Ford Legacy</p>
+    <h1 class="hero-title"><em>Rosamond</em> Rouse</h1>
+    <p class="hero-desc">Rosamond is a daughter of Lemuel &amp; Marguerite Rouse — and through Marguerite, a great-great-granddaughter of James Hiram Ford &amp; Jemima Anderson. Her family carries the Ford legacy forward.</p>
+  </div>
+</section>
+
+<!-- LINEAGE -->
+<div class="lineage-path">
+  <div class="lineage-inner">
+    <span class="lin-label">Lineage</span>
+    <span class="lin root">Hiram &amp; Jemima Ford</span><span class="arr">→</span>
+    <span class="lin">Maude Ford</span><span class="arr">→</span>
+    <span class="lin">Timita Tyler</span><span class="arr">→</span>
+    <span class="lin">Marguerite Stewart</span><span class="arr">→</span>
+    <span class="lin">Lem &amp; Marguerite Rouse</span><span class="arr">→</span>
+    <span class="lin hi">Rosamond Rouse</span>
+  </div>
+</div>
+
+<div class="tree-content">
+
+  <!-- ROSAMOND & JAMES -->
+  <div class="sec-hdr reveal">
+    <span class="sec-label">Rosamond's Family</span>
+    <h2 class="sec-title">Rosamond Rouse &amp; <em>James*</em></h2>
+  </div>
+
+  <div class="couple-row reveal">
+    <div class="pcard">
+      <div class="portrait"><div class="pp" style="background:linear-gradient(135deg,#3D5C35,#1C2E1A);">R<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);opacity:0;transition:opacity 0.2s;border-radius:4px;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div></div></div>
+      <div class="pn">Rosamond Rouse</div>
+      <div class="pr">Daughter of Lemuel &amp; Marguerite Rouse · Great-great-granddaughter of Hiram &amp; Jemima Ford</div>
+      <p class="ptxt">Rosamond is one of nine children born to Lem &amp; Marguerite Rouse at 1118 N. Burns Street, South Bend, Indiana — a home filled with Sunday dinners and lasting memories. Her children continue the Ford family legacy.</p>
+    </div>
+    <div class="cand">&amp;</div>
+    <div class="pcard">
+      <div class="portrait"><div class="pp" style="background:linear-gradient(135deg,#4A3728,#2C1A0E);opacity:0.7;">J*</div></div>
+      <div class="pn">James*</div>
+      <div class="pd">Deceased</div>
+      <div class="pr">Husband of Rosamond</div>
+      <p class="ptxt">James was Rosamond's husband and father of their children. Together they built a family that carries the Ford legacy forward into the next generation.</p>
+    </div>
+  </div>
+
+  <!-- ROSAMOND'S CHILDREN -->
+  <div class="conn-line reveal" style="background:linear-gradient(to bottom,var(--gold),rgba(200,151,58,0.1));"></div>
+  <div class="conn reveal"><div class="conn-rule" style="background:rgba(200,151,58,0.2);"></div><span class="conn-txt" style="color:var(--gold-light);">Rosamond's Children — Click Each to Expand</span><div class="conn-rule" style="background:rgba(200,151,58,0.2);"></div></div>
+
+  <div class="l1-grid">
+
+    <!-- ANTHONY -->
+    <div class="l1-card reveal rd1" onclick="toggleL1('anthony-p',this)">
+      <div class="l1-photo"><div class="l1-ph">A</div></div>
+      <div class="l1-info">
+        <div class="l1-name">Anthony</div>
+        <div class="l1-rel">Child of Rosamond</div>
+        <p class="l1-desc">Rosamond's son Anthony. Has three daughters.</p>
+        <div class="l1-hint">Tap to expand ▾</div>
+      </div>
+    </div>
+    <div id="anthony-p" class="l1-panel">
+      <span class="panel-label">Anthony's Children</span>
+      <div class="l2-grid">
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">K</div></div>
+          <div class="l2-info"><div class="l2-name">Kristen</div><div class="l2-rel">Anthony's daughter</div></div>
+        </div>
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">M</div></div>
+          <div class="l2-info"><div class="l2-name">Morgan</div><div class="l2-rel">Anthony's daughter</div></div>
+        </div>
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">M</div></div>
+          <div class="l2-info"><div class="l2-name">Mia</div><div class="l2-rel">Anthony's daughter</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRENDA / ALVIN -->
+    <div class="l1-card reveal rd2" onclick="toggleL1('brenda-p',this)">
+      <div class="l1-photo"><div class="l1-ph">BA</div></div>
+      <div class="l1-info">
+        <div class="l1-name">Brenda / Alvin</div>
+        <div class="l1-rel">Child of Rosamond</div>
+        <p class="l1-desc">Rosamond's daughter Brenda and her husband Alvin. Has two children.</p>
+        <div class="l1-hint">Tap to expand ▾</div>
+      </div>
+    </div>
+    <div id="brenda-p" class="l1-panel">
+      <span class="panel-label">Brenda &amp; Alvin's Children</span>
+      <div class="l2-grid">
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">M</div></div>
+          <div class="l2-info"><div class="l2-name">Marc</div><div class="l2-rel">Brenda's child</div></div>
+        </div>
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">S</div></div>
+          <div class="l2-info"><div class="l2-name">Sydney</div><div class="l2-rel">Brenda's child</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KENNETH -->
+    <div class="l1-card reveal rd3" onclick="toggleL1('kenneth-p',this)">
+      <div class="l1-photo"><div class="l1-ph">K</div></div>
+      <div class="l1-info">
+        <div class="l1-name">Kenneth</div>
+        <div class="l1-rel">Child of Rosamond</div>
+        <p class="l1-desc">Rosamond's son Kenneth. Has three children — Isaiah, Kamryn, and Lauren.</p>
+        <div class="l1-hint">Tap to expand ▾</div>
+      </div>
+    </div>
+    <div id="kenneth-p" class="l1-panel">
+      <span class="panel-label">Kenneth's Children</span>
+      <div class="l2-grid">
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">I</div></div>
+          <div class="l2-info"><div class="l2-name">Isaiah</div><div class="l2-rel">Kenneth's child</div></div>
+        </div>
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">K</div></div>
+          <div class="l2-info"><div class="l2-name">Kamryn</div><div class="l2-rel">Kenneth's child</div></div>
+        </div>
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">L</div></div>
+          <div class="l2-info"><div class="l2-name">Lauren</div><div class="l2-rel">Kenneth's child</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BETH -->
+    <div class="l1-card reveal rd4" onclick="toggleL1('beth-p',this)">
+      <div class="l1-photo"><div class="l1-ph">B</div></div>
+      <div class="l1-info">
+        <div class="l1-name">Beth</div>
+        <div class="l1-rel">Child of Rosamond</div>
+        <p class="l1-desc">Rosamond's daughter Beth. Has two children — Dasan and Drake.</p>
+        <div class="l1-hint">Tap to expand ▾</div>
+      </div>
+    </div>
+    <div id="beth-p" class="l1-panel">
+      <span class="panel-label">Beth's Children</span>
+      <div class="l2-grid">
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">D</div></div>
+          <div class="l2-info"><div class="l2-name">Dasan</div><div class="l2-rel">Beth's child</div></div>
+        </div>
+        <div class="l2-card no-expand">
+          <div class="l2-photo"><div class="l2-ph">D</div></div>
+          <div class="l2-info"><div class="l2-name">Drake</div><div class="l2-rel">Beth's child</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end l1-grid -->
+
+  <!-- SUBMIT PHOTOS -->
+  <div style="margin-top:48px;padding:32px;background:var(--parchment);border:1px solid var(--light-border);text-align:center;" class="reveal">
+    <p style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--deep);margin-bottom:10px;">Have a photo of Rosamond or her family?</p>
+    <p style="font-size:15px;color:var(--mid);margin-bottom:20px;">Every face added here is a piece of family history preserved. Submit via the Roots page.</p>
+    <a href="roots.html" style="display:inline-block;padding:12px 32px;background:var(--forest);color:var(--cream);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">Submit a Photo</a>
+  </div>
+
+</div>
+
+<!-- BACK STRIP -->
+<div class="back-strip">
+  <a href="maude.html">← Maude's Line</a>
+  <span class="sep">·</span>
+  <a href="faces.html">All Faces</a>
+  <span class="sep">·</span>
+  <a href="index.html">Home</a>
+</div>
+
+<!-- LEGACY NOTE -->
+<div class="legacy-note">
+  <div class="reveal" style="max-width:700px;margin:0 auto;">
+    <h3>Rosamond's family is coming to Chicago 2027.</h3>
+    <p>Through Marguerite Stewart Rouse, every person on this page is a descendant of James Hiram Ford &amp; Jemima Anderson. This is what the Ford Family Legacy is about — knowing who you are and where you come from.</p>
+    <a href="faces.html">← Back to All Ford Family Faces</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ford Family Legacy</div>
+      <p class="footer-brand-desc">Celebrating the descendants of James Hiram Ford &amp; Jemima Anderson.</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,247,240,0.3);margin-top:8px;">fordlegacy.com</p>
+    </div>
+    <div>
+      <p class="footer-col-title">The Site</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li><li><a href="roots.html">Our Roots</a></li>
+        <li><a href="faces.html">Faces</a></li><li><a href="network.html">Network</a></li>
+        <li><a href="newsletter.html">Legacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Lem &amp; Marguerite's Children</p>
+      <ul class="footer-links">
+        <li><a href="rosamond.html">Rosamond ✓</a></li>
+        <li><a href="#">Timothy — Coming Soon</a></li>
+        <li><a href="#">Brenda — Coming Soon</a></li>
+        <li><a href="#">Michael — Coming Soon</a></li>
+        <li><a href="#">Anthony — Coming Soon</a></li>
+        <li><a href="#">Kathy — Coming Soon</a></li>
+        <li><a href="#">Frederick — Coming Soon</a></li>
+        <li><a href="#">Gregory — Coming Soon</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Get Involved</p>
+      <ul class="footer-links">
+        <li><a href="network.html">Join the Directory</a></li>
+        <li><a href="roots.html">Submit a Memory</a></li>
+        <li><a href="roots.html">Submit a Photo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2027 Ford Family Legacy · fordlegacy.com</span>
+    <span class="footer-copy">Descendants of James Hiram Ford &amp; Jemima Anderson</span>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  reveals.forEach(el => obs.observe(el));
+
+  function toggleL1(panelId, card) {
+    const panel = document.getElementById(panelId);
+    const isOpen = panel.classList.contains('open');
+    // Close all siblings
+    document.querySelectorAll('.l1-card').forEach(c => {
+      c.classList.remove('open');
+      const h = c.querySelector('.l1-hint');
+      if(h) h.textContent = h.textContent.replace('▴','▾');
+    });
+    document.querySelectorAll('.l1-panel').forEach(p => p.classList.remove('open'));
+    if(!isOpen) {
+      panel.classList.add('open');
+      card.classList.add('open');
+      const h = card.querySelector('.l1-hint');
+      if(h) h.textContent = h.textContent.replace('▾','▴');
+      setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+    }
+  }
+
+  function toggleL2(panelId, card) {
+    const panel = document.getElementById(panelId);
+    const isOpen = panel.classList.contains('open');
+    const parent = card.closest('.l1-panel');
+    parent.querySelectorAll('.l2-card').forEach(c => {
+      c.classList.remove('open');
+      const h = c.querySelector('.l2-hint');
+      if(h) h.textContent = '▾';
+    });
+    parent.querySelectorAll('.l2-panel').forEach(p => p.classList.remove('open'));
+    if(!isOpen) {
+      panel.classList.add('open');
+      card.classList.add('open');
+      const h = card.querySelector('.l2-hint');
+      if(h) h.textContent = '▴';
+      setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+    }
+  }
+</script>
+</body>
+</html>
