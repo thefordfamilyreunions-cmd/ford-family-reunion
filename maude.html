@@ -361,6 +361,37 @@
     margin-bottom: 12px; margin-top: 4px; display: block;
   }
 
+
+  /* Drill cards inside expanded panels - dark text on light background */
+  .expanded-panel .drill-card {
+    background: white !important;
+    border-color: var(--light-border) !important;
+  }
+  .expanded-panel .drill-card .drill-name {
+    color: var(--deep) !important;
+  }
+  .expanded-panel .drill-card .drill-dates {
+    color: var(--gold) !important;
+  }
+  .expanded-panel .drill-card .drill-desc {
+    color: var(--mid) !important;
+  }
+  .expanded-panel .drill-card .drill-expand-hint {
+    color: rgba(61,92,53,0.5) !important;
+  }
+  .expanded-panel .drill-card.open {
+    background: white !important;
+    border-color: var(--sage) !important;
+    border-top: 3px solid var(--sage) !important;
+  }
+  .expanded-panel .drill-card:hover {
+    border-color: var(--gold) !important;
+  }
+  /* Also fix the portrait placeholder initials to be visible */
+  .expanded-panel .drill-portrait-placeholder {
+    color: rgba(200,151,58,0.8) !important;
+  }
+
   /* ── COMING SOON PANEL ── */
   .coming-soon-panel {
     padding: 28px 24px; text-align: center;
