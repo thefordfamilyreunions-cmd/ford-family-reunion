@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brenda & Alvin — Ford Family Legacy</title>
+<link rel="stylesheet" href="shared.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#1C2E1A;--gold:#C8973A;--gold-light:#E8B85A;
+    --cream:#FAF7F0;--parchment:#F5EDD8;--charcoal:#2A2A28;
+    --mid:#5A5A56;--light-border:#E0D8C8;--sage:#3D5C35;--sage-light:#6B9E5C;--deep:#1C2E1A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--charcoal);font-family:'Lora',serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+  /* HERO */
+  .hero{background:var(--forest);padding:72px 48px 88px;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:56px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(200,151,58,0.15),transparent 70%);}
+  .hero-inner{max-width:760px;position:relative;}
+  .hero-back{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,0.45);text-decoration:none;margin-bottom:32px;transition:color 0.2s;}
+  .hero-back:hover{color:var(--gold-light);}
+  .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,72px);font-weight:900;color:#FAF7F0;line-height:1.05;margin-bottom:20px;}
+  .hero-title em{color:var(--gold);font-style:italic;}
+  .hero-desc{font-size:18px;font-style:italic;color:rgba(250,247,240,0.65);line-height:1.75;max-width:600px;}
+
+  /* LINEAGE */
+  .lineage-path{background:var(--parchment);padding:24px 48px;border-bottom:1px solid var(--light-border);}
+  .lineage-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .lin-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-right:8px;}
+  .lin{font-family:'Lora',serif;font-size:15px;color:var(--charcoal);font-weight:500;}
+  .lin.root{font-weight:700;color:var(--sage);}
+  .lin.hi{color:var(--gold);font-weight:700;}
+  .arr{color:var(--gold);font-size:14px;opacity:0.6;}
+
+  /* MAIN */
+  .tree-content{max-width:1000px;margin:0 auto;padding:60px 48px 100px;}
+
+  /* PORTRAIT SQUARE */
+  .portrait{width:80px;height:80px;border-radius:4px;overflow:hidden;flex-shrink:0;margin-bottom:14px;}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+  .pp{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;font-style:italic;color:white;}
+
+  /* COUPLE ROW */
+  .couple-row{display:grid;grid-template-columns:1fr 48px 1fr;gap:0;align-items:start;margin-bottom:8px;}
+  .cand{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;color:var(--gold);text-align:center;padding-top:28px;}
+
+  /* PERSON CARD */
+  .pcard{background:white;border:1px solid var(--light-border);border-top:3px solid var(--gold);padding:24px;}
+  .pcard.sage-top{border-top-color:var(--sage);}
+  .pn{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--deep);margin-bottom:4px;line-height:1.2;}
+  .pd{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .pr{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(61,92,53,0.6);margin-bottom:10px;}
+  .ptxt{font-size:14px;line-height:1.75;color:var(--mid);}
+
+  /* TAGS */
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .tag{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;background:rgba(61,92,53,0.06);border:1px solid rgba(61,92,53,0.12);border-radius:20px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;color:var(--sage);}
+  .tag.gold{background:rgba(200,151,58,0.08);border-color:rgba(200,151,58,0.2);color:#8B6520;}
+
+  /* CONNECTOR */
+  .conn{display:flex;align-items:center;gap:16px;padding:4px 0;margin:8px 0;}
+  .conn-rule{flex:1;height:1px;background:var(--light-border);}
+  .conn-txt{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage-light);white-space:nowrap;}
+  .conn-line{width:2px;height:40px;margin:0 auto;background:linear-gradient(to bottom,var(--gold),rgba(200,151,58,0.1));}
+
+  /* SECTION HEADER */
+  .sec-hdr{margin:52px 0 24px;}
+  .sec-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--deep);line-height:1.15;}
+  .sec-title em{color:var(--gold);font-style:italic;}
+
+  /* COUPLE PHOTO CARD */
+  .couple-photo-card{
+    background:white;border:1px solid var(--light-border);
+    overflow:hidden;margin-bottom:32px;
+  }
+  .couple-photo-card img{
+    width:100%;height:320px;object-fit:cover;object-position:center 20%;display:block;
+  }
+  .couple-photo-info{padding:20px 24px;border-top:3px solid var(--gold);}
+  .couple-photo-names{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--deep);margin-bottom:4px;}
+  .couple-photo-sub{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);}
+
+  /* MEMBER CARD — for individual family members */
+  .member-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;}
+
+  .member-card{
+    background:white;border:1px solid var(--light-border);border-top:3px solid var(--sage);
+    overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;
+  }
+  .member-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.09);border-color:var(--gold);}
+  .member-card.gold-top{border-top-color:var(--gold);}
+
+  .member-photo{width:100%;aspect-ratio:3/4;max-height:280px;overflow:hidden;background:var(--forest);}
+  .member-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+  .member-ph{width:100%;height:100%;min-height:220px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:48px;font-weight:900;font-style:italic;color:rgba(200,151,58,0.5);}
+
+  .member-info{padding:20px 22px 22px;}
+  .member-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--deep);margin-bottom:3px;line-height:1.2;}
+  .member-rel{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(61,92,53,0.5);margin-bottom:6px;}
+  .member-location{font-family:'Montserrat',sans-serif;font-size:12px;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+  .member-desc{font-size:14px;line-height:1.75;color:var(--mid);margin-bottom:12px;}
+
+  /* BACK STRIP */
+  .back-strip{background:var(--forest);padding:16px 48px;display:flex;align-items:center;gap:24px;}
+  .back-strip a{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,0.5);text-decoration:none;transition:color 0.2s;}
+  .back-strip a:hover{color:var(--gold);}
+  .back-strip .sep{color:rgba(250,247,240,0.2);}
+
+  /* LEGACY NOTE */
+  .legacy-note{background:var(--gold);padding:40px 48px;text-align:center;}
+  .legacy-note h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--deep);margin-bottom:12px;}
+  .legacy-note p{font-size:16px;color:rgba(28,46,26,0.75);line-height:1.7;}
+  .legacy-note a{display:inline-block;margin-top:24px;padding:12px 32px;background:var(--deep);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  .rd1{transition-delay:0.05s;}.rd2{transition-delay:0.12s;}.rd3{transition-delay:0.19s;}
+
+  @media(max-width:800px){
+    .couple-row{grid-template-columns:1fr;}.cand{display:none;}
+    .member-grid{grid-template-columns:1fr;}
+    .tree-content{padding:40px 20px 80px;}
+    .hero{padding:48px 24px 72px;}
+    .lineage-path{padding:16px 20px;}
+    .back-strip{padding:16px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <svg class="nav-brand-tree" viewBox="0 0 40 40" fill="none"><path d="M20 36 L20 22 M20 22 L12 14 M20 22 L28 14 M20 26 L10 18 M20 26 L30 18 M12 14 L8 8 M12 14 L16 8 M28 14 L24 8 M28 14 L32 8" stroke="#C8973A" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div><span class="nav-brand-text">Ford Family Legacy</span><span class="nav-brand-sub">Descendants of Hiram &amp; Jemima Ford</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roots.html">Roots</a></li>
+    <li><a href="network.html">Network</a></li>
+    <li><a href="newsletter.html">Legacy</a></li>
+    <li><a href="faces.html">Faces</a></li>
+    <li><a href="network.html" class="nav-cta">Join the Directory</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <a href="rosamond.html" class="hero-back">← Back to Rosamond's Line</a>
+    <p class="hero-eyebrow">Rosamond's Daughter · Grandchild of Lem &amp; Marguerite Rouse</p>
+    <h1 class="hero-title">Brenda &amp; <em>Alvin</em></h1>
+    <p class="hero-desc">Brenda is a daughter of Rosamond Rouse and through her, a great-great-great-granddaughter of James Hiram Ford &amp; Jemima Anderson. Her family carries the Ford legacy into the next generation.</p>
+  </div>
+</section>
+
+<!-- LINEAGE -->
+<div class="lineage-path">
+  <div class="lineage-inner">
+    <span class="lin-label">Lineage</span>
+    <span class="lin root">Hiram &amp; Jemima Ford</span><span class="arr">→</span>
+    <span class="lin">Maude Ford</span><span class="arr">→</span>
+    <span class="lin">Timita Tyler</span><span class="arr">→</span>
+    <span class="lin">Marguerite Rouse</span><span class="arr">→</span>
+    <span class="lin">Rosamond</span><span class="arr">→</span>
+    <span class="lin hi">Brenda &amp; Alvin</span>
+  </div>
+</div>
+
+<div class="tree-content">
+
+  <!-- BRENDA & ALVIN -->
+  <div class="sec-hdr reveal">
+    <span class="sec-label">The Family</span>
+    <h2 class="sec-title">Brenda &amp; <em>Alvin</em></h2>
+  </div>
+
+  <div class="couple-row reveal">
+    <div class="pcard">
+      <div class="portrait"><div class="pp" style="background:linear-gradient(135deg,#3D5C35,#1C2E1A);">B</div></div>
+      <div class="pn">Brenda</div>
+      <div class="pr">Daughter of Rosamond · Grandchild of Lem &amp; Marguerite Rouse</div>
+      <p class="ptxt">Brenda is one of Rosamond's children and carries the Ford family legacy forward through her own family. Her roots trace back through Marguerite Stewart Rouse to Maude Ford to Hiram &amp; Jemima.</p>
+    </div>
+    <div class="cand">&amp;</div>
+    <div class="pcard">
+      <div class="portrait"><div class="pp" style="background:linear-gradient(135deg,#4A3728,#2C1A0E);">A</div></div>
+      <div class="pn">Alvin</div>
+      <div class="pr">Husband of Brenda</div>
+      <p class="ptxt">Alvin and Brenda built their family together. Their children Marc and Sydney represent the next generation of the Ford family legacy.</p>
+    </div>
+  </div>
+
+  <!-- THEIR CHILDREN -->
+  <div class="conn-line reveal" style="margin-top:16px;"></div>
+  <div class="conn reveal"><div class="conn-rule"></div><span class="conn-txt">Their Children</span><div class="conn-rule"></div></div>
+
+  <!-- MARC & KELSEY COUPLE PHOTO -->
+  <div class="sec-hdr reveal">
+    <span class="sec-label">Marc's Family</span>
+    <h2 class="sec-title">Marc Drake &amp; <em>Kelsey DiPietro</em></h2>
+  </div>
+
+  <div class="couple-photo-card reveal">
+    <img src="marc-kelsey.jpg" alt="Marc Drake and Kelsey DiPietro" style="object-position:center 15%;">
+    <div class="couple-photo-info">
+      <div class="couple-photo-names">Marc Drake &amp; Kelsey DiPietro</div>
+      <div class="couple-photo-sub">Milwaukee, Wisconsin · Married</div>
+    </div>
+  </div>
+
+  <div class="member-grid">
+    <!-- MARC -->
+    <div class="member-card gold-top reveal rd1">
+      <div class="member-photo">
+        <img src="marc-drake.jpg" alt="Marc Drake" style="object-position:center 15%;">
+      </div>
+      <div class="member-info">
+        <div class="member-name">Marc Drake</div>
+        <div class="member-rel">Son of Brenda &amp; Alvin · Great-great-great-grandson of Hiram &amp; Jemima Ford</div>
+        <div class="member-location">📍 Milwaukee, Wisconsin</div>
+        <p class="member-desc">Marc is an Ear, Nose &amp; Throat (ENT) physician practicing in Milwaukee, Wisconsin. An accomplished doctor who represents the talent and drive that runs deep in the Ford family. When he's not in the clinic, you'll find him on two wheels — cycling is his passion, and Biscotti the dog is usually nearby.</p>
+        <div class="tag-row">
+          <span class="tag gold">🏥 ENT Physician</span>
+          <span class="tag">🚴 Cycling</span>
+          <span class="tag">🐕 Biscotti</span>
+          <span class="tag">Milwaukee, WI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KELSEY -->
+    <div class="member-card reveal rd2">
+      <div class="member-photo">
+        <img src="marc-kelsey.jpg" alt="Kelsey DiPietro" style="object-position:70% 15%;">
+      </div>
+      <div class="member-info">
+        <div class="member-name">Kelsey DiPietro</div>
+        <div class="member-rel">Wife of Marc Drake · Ford Family by Marriage</div>
+        <div class="member-location">📍 Milwaukee, Wisconsin</div>
+        <p class="member-desc">Kelsey married into the Ford family and is a welcome and cherished part of it. She and Marc make their home in Milwaukee, Wisconsin, where they share a life full of good medicine, long bike rides, and the best dog named Biscotti.</p>
+        <div class="tag-row">
+          <span class="tag">Milwaukee, WI</span>
+          <span class="tag">🐕 Biscotti's co-parent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYDNEY -->
+  <div class="sec-hdr reveal" style="margin-top:56px;">
+    <span class="sec-label">Sydney's Family</span>
+    <h2 class="sec-title"><em>Sydney Gates</em></h2>
+  </div>
+
+  <div class="member-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="member-card gold-top reveal rd1">
+      <div class="member-photo">
+        <img src="sydney-gates.jpg" alt="Sydney Gates" style="object-position:center 10%;">
+      </div>
+      <div class="member-info">
+        <div class="member-name">Sydney Gates</div>
+        <div class="member-rel">Daughter of Brenda &amp; Alvin · Great-great-great-granddaughter of Hiram &amp; Jemima Ford</div>
+        <div class="member-location">📍 Gilbert, Arizona</div>
+        <p class="member-desc">Sydney is a teacher based in Gilbert, Arizona — and one of those people who makes everywhere she goes a little better. She brings that same energy to everything she does: sewing, hiking, working out, and giving back through Big Brothers Big Sisters. Sydney's commitment to youth mentorship is a living example of the Ford family legacy in action.</p>
+        <div class="tag-row">
+          <span class="tag gold">📚 Teacher</span>
+          <span class="tag">🧵 Sewing</span>
+          <span class="tag">🥾 Hiking</span>
+          <span class="tag">💪 Fitness</span>
+          <span class="tag">🤝 Big Brothers Big Sisters</span>
+          <span class="tag">Gilbert, AZ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUTURE PARTNER PLACEHOLDER -->
+    <div class="member-card reveal rd2" style="border:2px dashed var(--light-border);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;padding:40px 24px;text-align:center;">
+      <div style="font-size:40px;margin-bottom:16px;opacity:0.3;">+</div>
+      <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:rgba(90,90,86,0.4);margin-bottom:8px;">Partner Card</p>
+      <p style="font-size:13px;color:rgba(90,90,86,0.35);line-height:1.6;">When Sydney's partner joins the family, their card will live here.</p>
+    </div>
+  </div>
+
+  <!-- SUBMIT PHOTOS -->
+  <div style="margin-top:56px;padding:32px;background:var(--parchment);border:1px solid var(--light-border);text-align:center;" class="reveal">
+    <p style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--deep);margin-bottom:10px;">Have more photos or updates for this family?</p>
+    <p style="font-size:15px;color:var(--mid);margin-bottom:20px;">Submit via the Roots page and we'll add them here.</p>
+    <a href="roots.html" style="display:inline-block;padding:12px 32px;background:var(--forest);color:var(--cream);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">Submit a Photo or Update</a>
+  </div>
+
+</div>
+
+<!-- BACK STRIP -->
+<div class="back-strip">
+  <a href="rosamond.html">← Rosamond's Line</a>
+  <span class="sep">·</span>
+  <a href="maude.html">Maude's Line</a>
+  <span class="sep">·</span>
+  <a href="faces.html">All Faces</a>
+  <span class="sep">·</span>
+  <a href="index.html">Home</a>
+</div>
+
+<!-- LEGACY NOTE -->
+<div class="legacy-note">
+  <div class="reveal" style="max-width:700px;margin:0 auto;">
+    <h3>The Ford legacy lives in this family.</h3>
+    <p>A doctor. A teacher. A cyclist. A mentor. This is what Hiram &amp; Jemima's legacy looks like seven generations later — talented, giving, spread across the country, and about to gather together in Chicago 2027.</p>
+    <a href="faces.html">← Back to All Ford Family Faces</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ford Family Legacy</div>
+      <p class="footer-brand-desc">Celebrating the descendants of James Hiram Ford &amp; Jemima Anderson.</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,247,240,0.3);margin-top:8px;">fordlegacy.com</p>
+    </div>
+    <div>
+      <p class="footer-col-title">The Site</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roots.html">Our Roots</a></li>
+        <li><a href="faces.html">Faces</a></li>
+        <li><a href="network.html">Network</a></li>
+        <li><a href="newsletter.html">Legacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">This Line</p>
+      <ul class="footer-links">
+        <li><a href="maude.html">Maude Ford</a></li>
+        <li><a href="rosamond.html">Rosamond Rouse</a></li>
+        <li><a href="brenda-alvin.html">Brenda &amp; Alvin ✓</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Get Involved</p>
+      <ul class="footer-links">
+        <li><a href="network.html">Join the Directory</a></li>
+        <li><a href="roots.html">Submit a Memory</a></li>
+        <li><a href="roots.html">Submit a Photo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2027 Ford Family Legacy · fordlegacy.com</span>
+    <span class="footer-copy">Descendants of James Hiram Ford &amp; Jemima Anderson</span>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
