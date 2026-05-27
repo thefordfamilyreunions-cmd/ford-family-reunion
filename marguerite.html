@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marguerite Stewart Rouse — Ford Family Legacy</title>
+<link rel="stylesheet" href="shared.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#1C2E1A;--gold:#C8973A;--gold-light:#E8B85A;
+    --cream:#FAF7F0;--parchment:#F5EDD8;--charcoal:#2A2A28;
+    --mid:#5A5A56;--light-border:#E0D8C8;--sage:#3D5C35;--sage-light:#6B9E5C;--deep:#1C2E1A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--charcoal);font-family:'Lora',serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+  .hero{background:var(--deep);padding:72px 48px 88px;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:56px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%);}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(200,151,58,0.2),transparent 65%);}
+  .hero-inner{max-width:760px;position:relative;}
+  .hero-back{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,0.45);text-decoration:none;margin-bottom:32px;transition:color 0.2s;}
+  .hero-back:hover{color:var(--gold-light);}
+  .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,72px);font-weight:900;color:#FAF7F0;line-height:1.05;margin-bottom:20px;}
+  .hero-title em{color:var(--gold);font-style:italic;}
+  .hero-dates{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;color:rgba(250,247,240,0.5);margin-bottom:24px;}
+  .hero-desc{font-size:18px;font-style:italic;color:rgba(250,247,240,0.65);line-height:1.75;max-width:600px;}
+  .hero-quote{margin-top:24px;padding:16px 20px;border-left:3px solid var(--gold);background:rgba(200,151,58,0.08);}
+  .hero-quote p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:rgba(250,247,240,0.7);line-height:1.6;}
+  .hero-quote span{display:block;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,151,58,0.6);margin-top:8px;}
+
+  .lineage-path{background:var(--parchment);padding:24px 48px;border-bottom:1px solid var(--light-border);}
+  .lineage-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .lin-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-right:8px;}
+  .lin{font-family:'Lora',serif;font-size:15px;color:var(--charcoal);font-weight:500;}
+  .lin.root{font-weight:700;color:var(--sage);}
+  .lin.hi{color:var(--gold);font-weight:700;}
+  .arr{color:var(--gold);font-size:14px;opacity:0.6;}
+
+  .tree-content{max-width:1000px;margin:0 auto;padding:60px 48px 100px;}
+
+  .portrait{width:80px;height:80px;border-radius:4px;overflow:hidden;flex-shrink:0;margin-bottom:14px;}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+  .pp{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;font-style:italic;color:white;}
+
+  .couple-row{display:grid;grid-template-columns:1fr 48px 1fr;gap:0;align-items:start;margin-bottom:8px;}
+  .cand{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;color:var(--gold);text-align:center;padding-top:28px;}
+
+  .pcard{background:white;border:1px solid var(--light-border);border-top:3px solid var(--gold);padding:24px;}
+  .pcard.sage{border-top-color:var(--sage);}
+  .pn{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--deep);margin-bottom:4px;line-height:1.2;}
+  .pd{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .pr{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(61,92,53,0.6);margin-bottom:10px;}
+  .ptxt{font-size:14px;line-height:1.75;color:var(--mid);}
+
+  .conn{display:flex;align-items:center;gap:16px;padding:4px 0;margin:8px 0;}
+  .conn-rule{flex:1;height:1px;background:var(--light-border);}
+  .conn-txt{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage-light);white-space:nowrap;}
+  .conn-line{width:2px;height:40px;margin:0 auto;background:linear-gradient(to bottom,var(--gold),rgba(200,151,58,0.1));}
+
+  .sec-hdr{margin:52px 0 24px;}
+  .sec-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--deep);line-height:1.15;}
+  .sec-title em{color:var(--gold);font-style:italic;}
+
+  /* CHILDREN GRID */
+  .child-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+
+  .child-link{display:block;text-decoration:none;color:inherit;background:white;border:1px solid var(--light-border);border-top:3px solid var(--sage);position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;}
+  .child-link:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.09);}
+  .child-link.gold-top{border-top-color:var(--gold);}
+  .child-link.coming{cursor:default;border-style:dashed;border-top-style:solid;border-top-color:rgba(90,90,86,0.3);}
+  .child-link.coming:hover{transform:none;box-shadow:none;border-color:var(--light-border);}
+  .child-link.deceased{opacity:0.65;cursor:default;border-top-color:rgba(90,90,86,0.3);}
+  .child-link.deceased:hover{transform:none;box-shadow:none;}
+
+  .child-photo{width:100%;aspect-ratio:3/2;max-height:110px;overflow:hidden;background:var(--forest);}
+  .child-ph{width:100%;height:100%;min-height:90px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:30px;font-weight:900;font-style:italic;color:rgba(200,151,58,0.6);}
+  .child-info{padding:16px 18px 18px;}
+  .child-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--deep);margin-bottom:3px;line-height:1.2;}
+  .child-dates{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .child-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:10px;}
+  .child-cta{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);}
+  .child-link:hover .child-cta{color:var(--gold);}
+  .child-link.coming .child-cta,.child-link.deceased .child-cta{color:rgba(90,90,86,0.35);}
+
+  .live-badge{position:absolute;top:8px;right:8px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;color:white;background:var(--sage);padding:2px 7px;border-radius:10px;}
+  .dec-badge{position:absolute;top:8px;right:8px;font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;color:rgba(90,90,86,0.6);background:var(--light-border);padding:2px 7px;border-radius:10px;}
+
+  /* MEMORY QUOTE BLOCK */
+  .memory-block{background:var(--deep);padding:48px;margin:48px 0;position:relative;}
+  .memory-block::before{content:'\201C';font-family:'Playfair Display',serif;font-size:120px;color:rgba(200,151,58,0.15);position:absolute;top:-10px;left:24px;line-height:1;}
+  .memory-text{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--cream);line-height:1.7;position:relative;z-index:1;}
+  .memory-attr{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,151,58,0.6);margin-top:16px;display:block;}
+
+  .back-strip{background:var(--forest);padding:16px 48px;display:flex;align-items:center;gap:24px;}
+  .back-strip a{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,0.5);text-decoration:none;transition:color 0.2s;}
+  .back-strip a:hover{color:var(--gold);}
+  .back-strip .sep{color:rgba(250,247,240,0.2);}
+
+  .legacy-note{background:var(--gold);padding:40px 48px;text-align:center;}
+  .legacy-note h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--deep);margin-bottom:12px;}
+  .legacy-note p{font-size:16px;color:rgba(28,46,26,0.75);line-height:1.7;}
+  .legacy-note a{display:inline-block;margin-top:24px;padding:12px 32px;background:var(--deep);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  .rd1{transition-delay:0.05s;}.rd2{transition-delay:0.1s;}.rd3{transition-delay:0.15s;}
+
+  @media(max-width:800px){
+    .couple-row{grid-template-columns:1fr;}.cand{display:none;}
+    .child-grid{grid-template-columns:repeat(2,1fr);}
+    .tree-content{padding:40px 20px 80px;}
+    .hero{padding:48px 24px 72px;}
+    .lineage-path{padding:16px 20px;}
+    .memory-block{padding:32px 24px;}
+    .back-strip{padding:16px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <svg class="nav-brand-tree" viewBox="0 0 40 40" fill="none"><path d="M20 36 L20 22 M20 22 L12 14 M20 22 L28 14 M20 26 L10 18 M20 26 L30 18 M12 14 L8 8 M12 14 L16 8 M28 14 L24 8 M28 14 L32 8" stroke="#C8973A" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div><span class="nav-brand-text">Ford Family Legacy</span><span class="nav-brand-sub">Descendants of Hiram &amp; Jemima Ford</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roots.html">Roots</a></li>
+    <li><a href="network.html">Network</a></li>
+    <li><a href="newsletter.html">Legacy</a></li>
+    <li><a href="faces.html">Faces</a></li>
+    <li><a href="network.html" class="nav-cta">Join the Directory</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <a href="timita.html" class="hero-back">← Back to Timita's Line</a>
+    <p class="hero-eyebrow">Great-granddaughter of Hiram &amp; Jemima Ford · The Heart of This Line</p>
+    <h1 class="hero-title">Marguerite<br><em>Stewart Rouse</em></h1>
+    <p class="hero-dates">October 12, 1918 — January 1967 · South Bend, Indiana</p>
+    <p class="hero-desc">Great-granddaughter of James Hiram Ford and Jemima Anderson. Wife of Lemuel Hugh Rouse. Mother of nine. The heart of this entire family line.</p>
+    <div class="hero-quote">
+      <p>"She had the funeral of a rock star. I had never seen so many people in one place at one time in all of my life."</p>
+      <span>— Kathy, remembering her mother Marguerite</span>
+    </div>
+  </div>
+</section>
+
+<div class="lineage-path">
+  <div class="lineage-inner">
+    <span class="lin-label">Lineage</span>
+    <span class="lin root">Hiram &amp; Jemima Ford</span><span class="arr">→</span>
+    <span class="lin">Maude Ford</span><span class="arr">→</span>
+    <span class="lin">Timita Tyler</span><span class="arr">→</span>
+    <span class="lin hi">Marguerite Stewart Rouse</span><span class="arr">→</span>
+    <span class="lin" style="color:var(--sage);font-weight:600;">9 Children · Chicago 2027</span>
+  </div>
+</div>
+
+<div class="tree-content">
+
+  <!-- LEM & MARGUERITE -->
+  <div class="sec-hdr reveal">
+    <span class="sec-label">Generation Three — The Heart</span>
+    <h2 class="sec-title">Lemuel &amp; <em>Marguerite Rouse</em></h2>
+  </div>
+
+  <div class="couple-row reveal">
+    <div class="pcard sage">
+      <div class="portrait"><div class="pp" style="background:linear-gradient(135deg,#8B4513,#5C2E0A);">LR</div></div>
+      <div class="pn">Lemuel Hugh Rouse</div>
+      <div class="pd">August 17, 1913 — 1975</div>
+      <div class="pr">Son of Earl Rouse &amp; Catherine Maude Lucas · Kokomo, Indiana</div>
+      <p class="ptxt">Lemuel was born August 17, 1913 in Kokomo, Indiana. He married Marguerite Stewart on August 31, 1934 in St. Joseph County, Indiana. Together they built a family and a home at 1118 N. Burns Street, South Bend — a place of Sunday dinners, cinnamon rolls, and memories that live on in every person on this page.</p>
+    </div>
+    <div class="cand">&amp;</div>
+    <div class="pcard">
+      <div class="portrait"><div class="pp" style="background:linear-gradient(135deg,#C8973A,#8B6520);">MR</div></div>
+      <div class="pn">Marguerite Stewart Rouse</div>
+      <div class="pd">October 12, 1918 — January 1967</div>
+      <div class="pr">Great-granddaughter of James Hiram Ford &amp; Jemima Anderson</div>
+      <p class="ptxt">Born in South Bend, Indiana. Daughter of Timita Tyler and Samuel Stewart. Granddaughter of Maude Ford. Great-granddaughter of Hiram &amp; Jemima. Marguerite raised nine children and left a legacy so powerful that her passing drew a crowd none of them had ever seen. She is the heart of this line.</p>
+    </div>
+  </div>
+
+  <!-- MEMORY QUOTE -->
+  <div class="memory-block reveal">
+    <p class="memory-text">Mama made the best rolls in the entire state. We hated that the preacher came for Sunday dinner and always had to have the first piece of chicken — and the first roll to boot! Sundays were always like a feast at 1118. Food for royalty.</p>
+    <span class="memory-attr">— Kathy, remembering 1118 N. Burns Street</span>
+  </div>
+
+  <!-- THEIR 9 CHILDREN -->
+  <div class="conn-line reveal" style="background:linear-gradient(to bottom,var(--gold),rgba(200,151,58,0.1));"></div>
+  <div class="conn reveal"><div class="conn-rule" style="background:rgba(200,151,58,0.2);"></div><span class="conn-txt" style="color:var(--gold-light);">Their 9 Children — Click to Explore</span><div class="conn-rule" style="background:rgba(200,151,58,0.2);"></div></div>
+
+  <div class="child-grid reveal">
+
+    <div class="child-link deceased">
+      <div class="child-photo"><div class="child-ph" style="opacity:0.4;">T</div></div>
+      <span class="dec-badge">Deceased</span>
+      <div class="child-info">
+        <div class="child-name">Timothy* &amp; Hazel*</div>
+        <div class="child-dates">Deceased</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+
+    <div class="child-link deceased">
+      <div class="child-photo"><div class="child-ph" style="opacity:0.4;">B</div></div>
+      <span class="dec-badge">Deceased</span>
+      <div class="child-info">
+        <div class="child-name">Brenda* / Jacob*</div>
+        <div class="child-dates">1941–1976</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+
+    <div class="child-link coming">
+      <div class="child-photo"><div class="child-ph">M</div></div>
+      <div class="child-info">
+        <div class="child-name">Michael / Alice</div>
+        <div class="child-dates">&nbsp;</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+
+    <div class="child-link deceased">
+      <div class="child-photo"><div class="child-ph" style="opacity:0.4;">K</div></div>
+      <span class="dec-badge">Deceased</span>
+      <div class="child-info">
+        <div class="child-name">Kenneth*</div>
+        <div class="child-dates">1945–2004</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite. No children recorded.</p>
+        <span class="child-cta">—</span>
+      </div>
+    </div>
+
+    <div class="child-link coming">
+      <div class="child-photo"><div class="child-ph">A</div></div>
+      <div class="child-info">
+        <div class="child-name">Anthony</div>
+        <div class="child-dates">&nbsp;</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+
+    <div class="child-link gold-top" onclick="window.location='rosamond.html'" style="cursor:pointer;">
+      <div class="child-photo"><div class="child-ph" style="color:rgba(200,151,58,0.8);">R</div></div>
+      <span class="live-badge">Live ✓</span>
+      <div class="child-info">
+        <div class="child-name">Rosamond / James*</div>
+        <div class="child-dates">&nbsp;</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite. Her family line is live — explore Marc, Sydney and more.</p>
+        <span class="child-cta">Explore Rosamond's line →</span>
+      </div>
+    </div>
+
+    <div class="child-link coming">
+      <div class="child-photo"><div class="child-ph">K</div></div>
+      <div class="child-info">
+        <div class="child-name">Kathy</div>
+        <div class="child-dates">&nbsp;</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+
+    <div class="child-link coming">
+      <div class="child-photo"><div class="child-ph">F</div></div>
+      <div class="child-info">
+        <div class="child-name">Frederick</div>
+        <div class="child-dates">&nbsp;</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+
+    <div class="child-link deceased">
+      <div class="child-photo"><div class="child-ph" style="opacity:0.4;">G</div></div>
+      <span class="dec-badge">Deceased</span>
+      <div class="child-info">
+        <div class="child-name">Gregory*</div>
+        <div class="child-dates">1956–2003</div>
+        <p class="child-desc">Child of Lem &amp; Marguerite.</p>
+        <span class="child-cta">Family page coming soon</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="back-strip">
+  <a href="timita.html">← Timita's Line</a>
+  <span class="sep">·</span>
+  <a href="maude.html">Maude's Line</a>
+  <span class="sep">·</span>
+  <a href="faces.html">All Faces</a>
+  <span class="sep">·</span>
+  <a href="index.html">Home</a>
+</div>
+
+<div class="legacy-note">
+  <div class="reveal" style="max-width:700px;margin:0 auto;">
+    <h3>Marguerite's family is coming to Chicago 2027.</h3>
+    <p>Nine children. Dozens of grandchildren. Great grandchildren and great great grandchildren. All tracing back to Hiram &amp; Jemima Ford through Maude, Timita, and Marguerite. This is the tree. This is the legacy.</p>
+    <a href="rosamond.html">Explore Rosamond's Line →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ford Family Legacy</div>
+      <p class="footer-brand-desc">Celebrating the descendants of James Hiram Ford &amp; Jemima Anderson.</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,247,240,0.3);margin-top:8px;">fordlegacy.com</p>
+    </div>
+    <div>
+      <p class="footer-col-title">The Site</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roots.html">Our Roots</a></li>
+        <li><a href="faces.html">Faces</a></li>
+        <li><a href="network.html">Network</a></li>
+        <li><a href="newsletter.html">Legacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">This Line</p>
+      <ul class="footer-links">
+        <li><a href="maude.html">Maude Ford</a></li>
+        <li><a href="timita.html">Timita Tyler ✓</a></li>
+        <li><a href="marguerite.html">Marguerite Rouse ✓</a></li>
+        <li><a href="rosamond.html">Rosamond ✓</a></li>
+        <li><a href="brenda-alvin.html">Brenda &amp; Alvin ✓</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Get Involved</p>
+      <ul class="footer-links">
+        <li><a href="network.html">Join the Directory</a></li>
+        <li><a href="roots.html">Submit a Memory</a></li>
+        <li><a href="roots.html">Submit a Photo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2027 Ford Family Legacy · fordlegacy.com</span>
+    <span class="footer-copy">Descendants of James Hiram Ford &amp; Jemima Anderson</span>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
